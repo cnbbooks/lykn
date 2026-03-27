@@ -2,5 +2,5 @@
 
 <!-- Named page links below: /-->
 
-[cover]: images/cover.jpg
-[cover-large]: images/cover-large.jpg
+[cover]: images/cover.png
+[cover-large]: images/cover-large.png

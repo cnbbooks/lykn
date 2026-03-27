@@ -1,6 +1,6 @@
 [book]
 title = "Lykn"
-author = "Duncan McGreggor"
+authors = ["Duncan McGreggor"]
 description = "And Now for Something Completely Parenthetical — A Lisp Flavoured JavaScript"
 language = "en"
 

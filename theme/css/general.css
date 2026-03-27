@@ -61,7 +61,8 @@ h2:target::before,
 h3:target::before,
 h4:target::before,
 h5:target::before,
-h6:target::before {
+h6:target::before,
+dt:target::before {
     display: inline-block;
     content: "»";
     margin-inline-start: -30px;
@@ -80,7 +81,7 @@ h6:target::before {
 .page {
     outline: 0;
     padding: 0 var(--page-padding);
-    margin-block-start: calc(0px - var(--menu-bar-height)); /* Compensate for the #menu-bar-hover-placeholder */
+    margin-block-start: calc(0px - var(--menu-bar-height)); /* Compensate for the #mdbook-menu-bar-hover-placeholder */
 }
 .page-wrapper {
     box-sizing: border-box;
@@ -155,6 +156,8 @@ blockquote {
     border-block-end: .1em solid var(--quote-border);
 }
 
+/* TODO: Remove .warning in a future version of mdbook, it is replaced by
+blockquote tags. */
 .warning {
     margin: 20px;
     padding: 0 20px;
@@ -279,201 +282,127 @@ sup {
     font-style: italic;
 }
 
-/* Custom LFE Manual Styles */
-
-/* Inline code with background color */
-code,
-:not(pre):not(a)>.hljs {
-    background-color: var(--inline-code-background-color);
-    color: var(--inline-code-color);
+.fa-svg svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    margin-bottom: -0.1em;
 }
 
-/* Alert boxes */
-.alert {
-    position: relative;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: 6px;
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
 }
 
-.alert-heading {
-    color: inherit;
-    margin: 0;
-    padding: 0;
+/* This uses a CSS counter to add numbers to definitions, but only if there is
+ more than one definition. */
+dl, dt {
+    counter-reset: dd-counter;
 }
 
-.alert-link {
-    font-weight: 700;
+/* When there is more than one definition, increment the counter. The first
+selector selects the first definition, and the second one selects definitions
+2 and beyond.*/
+dd:has(+ dd), dd + dd {
+    counter-increment: dd-counter;
+    /* Use flex display to help with positioning the numbers when there is a p
+    tag inside the definition. */
+    display: flex;
+    align-items: flex-start;
 }
 
-/* Primary */
-
-.alert-primary {
-    color: var(--alert-primary-fg);
-    background-color: var(--alert-primary-bg);
-    border-color: var(--alert-primary-border);
+/* Shows the counter for definitions. The first selector selects the first
+definition, and the second one selections definitions 2 and beyond.*/
+dd:has(+ dd)::before, dd + dd::before  {
+    content: counter(dd-counter) ". ";
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 0.5em;
 }
 
-.alert-primary hr {
-    border-top-color: var(--alert-primary-hr);
+dd > p {
+    /* For loose definitions that have a p tag inside, don't add a bunch of
+    space before the definition. */
+    margin-top: 0;
 }
 
-.alert-primary .alert-link {
-    color: var(--alert-primary-link);
+/* Remove some excess space from the bottom. */
+.blockquote-tag p:last-child {
+    margin-bottom: 2px;
 }
 
-.alert-primary,
-.alert-primary>th,
-.alert-primary>td {
-    background-color: var(--alert-primary-bg);
+.blockquote-tag {
+    /* Add some padding to make the vertical bar a little taller than the text.*/
+    padding: 2px 0px 2px 20px;
+    /* Add a solid color bar on the left side. */
+    border-inline-start-style: solid;
+    border-inline-start-width: 4px;
+    /* Disable the background color from normal blockquotes . */
+    background-color: inherit;
+    /* Disable border blocks from blockquotes. */
+    border-block-start: none;
+    border-block-end: none;
 }
 
-/* Secondary */
-
-.alert-secondary {
-    color: var(--alert-secondary-fg);
-    background-color: var(--alert-secondary-bg);
-    border-color: var(--alert-secondary-border);
+.blockquote-tag-title svg {
+    fill: currentColor;
+    /* Add space between the icon and the title. */
+    margin-right: 8px;
 }
 
-.alert-secondary hr {
-    border-top-color: var(--alert-secondary-hr);
+.blockquote-tag-note {
+    border-inline-start-color: var(--blockquote-note-color);
 }
 
-.alert-secondary .alert-link {
-    color: var(--alert-secondary-link);
+.blockquote-tag-tip {
+    border-inline-start-color: var(--blockquote-tip-color);
 }
 
-.alert-secondary,
-.alert-secondary>th,
-.alert-secondary>td {
-    background-color: var(--alert-secondary-bg);
+.blockquote-tag-important {
+    border-inline-start-color: var(--blockquote-important-color);
 }
 
-/* Success */
-
-.alert-success {
-    color: var(--alert-success-fg);
-    background-color: var(--alert-success-bg);
-    border-color: var(--alert-success-border);
+.blockquote-tag-warning {
+    border-inline-start-color: var(--blockquote-warning-color);
 }
 
-.alert-success hr {
-    border-top-color: var(--alert-success-hr);
+.blockquote-tag-caution {
+    border-inline-start-color: var(--blockquote-caution-color);
 }
 
-.alert-success .alert-link {
-    color: var(--alert-success-link);
+.blockquote-tag-note .blockquote-tag-title {
+    color: var(--blockquote-note-color);
 }
 
-.alert-success,
-.alert-success>th,
-.alert-success>td {
-    background-color: var(--alert-success-bg);
+.blockquote-tag-tip .blockquote-tag-title {
+    color: var(--blockquote-tip-color);
 }
 
-/* Info */
-
-.alert-info {
-    color: var(--alert-info-fg);
-    background-color: var(--alert-info-bg);
-    border-color: var(--alert-info-border);
+.blockquote-tag-important .blockquote-tag-title {
+    color: var(--blockquote-important-color);
 }
 
-.alert-info hr {
-    border-top-color: var(--alert-info-hr);
+.blockquote-tag-warning .blockquote-tag-title {
+    color: var(--blockquote-warning-color);
 }
 
-.alert-info .alert-link {
-    color: var(--alert-info-link);
+.blockquote-tag-caution .blockquote-tag-title {
+    color: var(--blockquote-caution-color);
 }
 
-.alert-info,
-.alert-info>th,
-.alert-info>td {
-    background-color: var(--alert-info-bg);
+.blockquote-tag-title {
+    /* Slightly increase the weight for more emphasis. */
+    font-weight: 600;
+    /* Vertically center the icon with the text. */
+    display: flex;
+    align-items: center;
+    /* Remove default large margins for a more compact display. */
+    margin: 2px 0 8px 0;
 }
 
-/* Warning */
-
-.alert-warning {
-    color: var(--alert-warning-fg);
-    background-color: var(--alert-warning-bg);
-    border-color: var(--alert-warning-border);
-}
-
-.alert-warning hr {
-    border-top-color: var(--alert-warning-hr);
-}
-
-.alert-warning .alert-link {
-    color: var(--alert-warning-link);
-}
-
-.alert-warning,
-.alert-warning>th,
-.alert-warning>td {
-    background-color: var(--alert-warning-bg);
-}
-
-/* Danger */
-
-.alert-danger {
-    color: var(--alert-danger-fg);
-    background-color: var(--alert-danger-bg);
-    border-color: var(--alert-danger-border);
-}
-
-.alert-danger hr {
-    border-top-color: var(--alert-danger-hr);
-}
-
-.alert-danger .alert-link {
-    color: var(--alert-danger-link);
-}
-
-.alert-danger,
-.alert-danger>th,
-.alert-danger>td {
-    background-color: var(--alert-danger-bg);
-}
-
-/* Liffy mascot images */
-img.liffy-bot-alert {
-    opacity: 0.60 !important;
-}
-
-h4.alert-heading img.liffy-bot-alert {
-    height: 18px !important;
-}
-
-img.liffy-bot-mascot {
-    height: 100px;
-    float: left;
-}
-
-/* Footnotes */
-
-.footnotes {
-    font-size: 10pt;
-    padding-top: 2em;
-    margin-top: 2em;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.footnotes ol,
-.footnotes ol li {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0.6em;
-    margin-right: 0;
-}
-
-.footnotes hr {
-    border: 0;
-    border-bottom: solid 1px #666;
+.blockquote-tag-title .fa-svg {
+    fill: currentColor;
+    /* Add some space between the icon and the text. */
+    margin-right: 8px;
 }
