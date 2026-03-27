@@ -429,6 +429,12 @@
 
     --sidebar-header-border-color: #377CA2;
 
+    /* Cover-derived heading colours */
+    --heading-h1: oklch(0.26 0.015 244);
+    --heading-h2: oklch(0.35 0.04 244);
+    --heading-h3: oklch(0.50 0.10 50);
+    --heading-h4: oklch(0.55 0.08 57);
+
     /* Custom alert styles */
     --alert-primary-fg:  #1a3047;
     --alert-primary-bg: #325D88;

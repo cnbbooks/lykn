@@ -1,18 +1,32 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Red Hat Display', system-ui, sans-serif;
 }
+
+h1 { font-weight: 800; }
+h2 { font-weight: 700; }
+h3 { font-weight: 600; }
+h4, h5, h6 { font-weight: 600; }
+
+/* Override mdbook's .header:link colour (headings are wrapped in <a> tags) */
+.content h1 > .header:link, .content h1 > .header:visited { color: var(--heading-h1); }
+.content h2 > .header:link, .content h2 > .header:visited { color: var(--heading-h2); }
+.content h3 > .header:link, .content h3 > .header:visited { color: var(--heading-h3); }
+.content h4 > .header:link, .content h4 > .header:visited,
+.content h5 > .header:link, .content h5 > .header:visited,
+.content h6 > .header:link, .content h6 > .header:visited { color: var(--heading-h4); }
 
 /* Body text */
 body, p {
-    font-family: 'Cabin', sans-serif;
+    font-family: 'Literata', Georgia, serif;
     font-size: 16px;
-    line-height: 2;
+    line-height: 1.65;
+    font-optical-sizing: auto;
 }
 
 /* Code */
@@ -29,7 +43,8 @@ code,
 }
 
 blockquote {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
     padding-left: 3em;
     padding-right: 3em;
     padding-top: 1em;
