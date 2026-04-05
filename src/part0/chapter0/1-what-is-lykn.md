@@ -1,6 +1,8 @@
-## What Is lykn?
+## What Is Lykn?
 
-lykn is a Lisp that compiles to JavaScript. Not a subset of JavaScript, not a framework, not a transpiler with opinions about semicolons — a *Lisp*. S-expressions in, clean JavaScript out. The compiled output has no runtime, no dependencies, no evidence that a Lisp was ever involved except for a certain suspicious elegance in the variable naming and an absence of `var`.
+Lykn is a Lisp that compiles to JavaScript. Not a subset of JavaScript, not a framework, not a transpiler with opinions about semicolons — a *Lisp*. S-expressions in, clean JavaScript out. The compiled output has no runtime, no dependencies, no evidence that a Lisp was ever involved except for a certain suspicious elegance in the variable naming and an absence of `var`.
+
+### An Example
 
 Here is a lykn program:
 
@@ -38,8 +40,18 @@ The type annotations — `:string` on the parameter, `:returns :string` on the f
 
 lykn has two layers, and understanding them is the key to understanding everything else in this book.
 
-**lykn/kernel** is the lower layer: approximately thirty forms that map one-to-one to JavaScript's own constructs. `const`, `function`, `lambda`, `=>`, `if`, `import`, `class` — these are the kernel. They are the s-expression spelling of JavaScript's AST, and the compiler translates them to ESTree nodes with the serene indifference of a very precise dictionary. If you write kernel syntax, you are writing JavaScript with different punctuation. Nothing more.
+### Kernel Layer
 
-**lykn/surface** is what you actually use. It sits on top of the kernel and provides the things JavaScript was too polite to insist upon: immutable bindings via `bind` (which compiles to `const` and does not have a mutable cousin), typed functions via `func` (with contracts, pattern-based dispatch, and the aforementioned type checks), algebraic data types via `type`, exhaustive pattern matching via `match`, controlled mutation via `cell` containers, and threading macros that let you write data transformation pipelines without nesting your code to the point where it begins to resemble a geological formation.
+The **Lykn Kernel** is the lower layer: approximately thirty forms that map one-to-one to JavaScript's own constructs. `const`, `function`, `lambda`, `=>`, `if`, `import`, `class` — these are the kernel. They are the s-expression spelling of JavaScript's AST, and the compiler translates them to ESTree nodes with the serene indifference of a very precise dictionary. If you write kernel syntax, you are writing JavaScript with different punctuation. Nothing more.
 
-Surface forms compile to kernel forms. Kernel forms compile to JavaScript. At no point does anything magical happen — the magic, such as it is, lies in the *absence* of magic. The compiled output is readable. Debuggable. Ordinary. The sort of JavaScript you would write yourself, if you had infinite patience and a deep personal commitment to `const`.
+### Surface Layer
+
+The **Lykn Surface** is what you encouraged to use. It sits on top of the kernel and provides the things JavaScript was too polite to insist upon: immutable bindings via `bind` (which compiles to `const` and does not have a mutable cousin), typed functions via `func` (with contracts, pattern-based dispatch, and the aforementioned type checks), algebraic data types via `type`, exhaustive pattern matching via `match`, controlled mutation via `cell` containers, and threading macros that let you write data transformation pipelines without nesting your code to the point where it begins to resemble a geological formation.
+
+### All Together, Now
+
+Surface forms compile to kernel forms. Kernel forms compile to JavaScript. At no point does anything magical happen — the magic, such that it is, lies in the *absence* of magic. The compiled output is readable. Debuggable. Ordinary. The sort of JavaScript you would write yourself, if you had infinite patience and a deep personal commitment to `const`.
+
+### Suspension of Belief
+
+It is hoped that, for now, you will take the above on faith. This faith will be rewarded in Chapter 2, where the two-layer architecture will be explained in detail — how surface forms compile to kernel forms, how kernel forms compile to ESTree, and how ESTree becomes the JavaScript you deploy. Until then, trust that the mechanism works and focus on the idioms.

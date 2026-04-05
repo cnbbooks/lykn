@@ -1,5 +1,7 @@
 ## The Lisp Lineage
 
+But before we dive into Lykn, a few nods and notes to its other half.
+
 ### McCarthy's Nine Operators
 
 John McCarthy did not set out to design a programming language. He set out to axiomatize computation — and accidentally built something you could run on actual hardware, which was roughly as surprising as discovering that your proof of the four-colour theorem could also make toast. His 1960 paper, "Recursive Functions of Symbolic Expressions and Their Computation by Machine," established the first formal specification of what would become Lisp with exactly nine operators.
@@ -60,10 +62,24 @@ Theoretical work from the 1980s and 1990s established what truly cannot be deriv
 
 Five forms. Quote, lambda, if, set!, define. Sixty-six years of refinement, from McCarthy's nine to this. Everything else is syntactic convenience — which is not to diminish it, because syntactic convenience is what separates a language you can *use* from one you merely *admire*.
 
-### The lykn Connection
+### A Lisp of Yet Another Flavour
 
-lykn/kernel has approximately thirty forms that map to ESTree nodes — JavaScript's own AST representation. This is a larger set than Scheme's six, because JavaScript is a larger language than Scheme, and a thin skin must follow the contours of what it covers.
+The trajectory from McCarthy to R5RS is a story about discovering how little you need. The trajectory from Scheme to LFE — Lisp Flavoured Erlang — is a story about discovering what you can *do* with that discovery once you stop being precious about your runtime.
 
-But lykn/surface sits on top of that kernel, and it recapitulates the same insight that has driven Lisp for six decades: a small set of primitives, composed through a macro system, can express everything. `bind`, `func`, `fn`, `type`, `match`, `obj`, `cell`, `macro` — eight surface forms, and a macro system that lets you build anything you need from them.
+Robert Virding created LFE in 2008, and the premise was, on its face, audacious: take Lisp syntax — s-expressions, macros, the whole parenthetical apparatus — and compile it not to its own runtime but to the BEAM, Erlang's virtual machine. The language you *wrote* was a Lisp. The language you *ran* was Erlang. LFE programs had access to OTP supervision trees, hot code loading, distributed message passing, and the full Erlang ecosystem, while the programmer's fingers typed `defmodule` and `defun` and `cond` and `caddr` and felt, unmistakably, the shape of a Lisp beneath them.
+
+The key insight was architectural: LFE did not attempt to *replace* Erlang's semantics. It provided an alternative *syntax* for them. Erlang's pattern matching, its immutable variables, its process model — all of these survived compilation unchanged. LFE was a thin skin. A very good thin skin, with macros and a REPL and all the affordances a Lisper expects, but a thin skin nonetheless. The compiled output was standard BEAM bytecode, indistinguishable from compiled Erlang, with no runtime overhead and no LFE-specific dependencies.
+
+If this sounds familiar, it should.
+
+Lykn applies the same architectural principle to a different host. Where LFE is a Lisp over Erlang's BEAM, Lykn is a Lisp over JavaScript's ESTree. Where LFE preserves Erlang's immutability and pattern matching, Lykn's surface language *introduces* immutability and pattern matching that JavaScript lacks. Where LFE's compiled output is clean BEAM bytecode, Lykn's compiled output is clean JavaScript. The thin-skin philosophy — respect the host, don't reinvent its semantics, provide better syntax and let the programmer keep everything the host already gives them — runs directly from Virding's work into the design decisions documented in this book.
+
+The debt is not merely philosophical. LFE's macro system, its approach to module namespacing, its conviction that a Lisp flavour should feel like a *native* of its host platform rather than a tourist — these shaped Lykn's priorities from the first commit. When Lykn compiles `console:log` to `console.log` using colon syntax instead of inventing its own I/O abstraction, that is LFE's influence. When Lykn uses `func` and `bind` and `match` instead of `defun` and `def` and `case`, preferring short English words to traditional Lisp abbreviations, that is a conscious departure from LFE — but a departure made possible by LFE having already proven that the *important* thing about a Lisp is not its vocabulary but its architecture.
+
+### The Lykn Connection
+
+The Lykn kernel language has approximately thirty forms that map to ESTree nodes — JavaScript's own AST representation. This is a larger set than Scheme's six, because JavaScript is a larger language than Scheme, and a thin skin must follow the contours of what it covers.
+
+But the Lykn surface language sits on top of that kernel. It not only allows for the includsion of ingenious innovations from the likes of Erlang, LFE, and Clouure -- but more to the very core of things, it recapitulates the insight mentioned abouve, one that has driven Lisp for six decades: a small set of primitives, composed through a macro system, can express everything. `bind`, `func`, `fn`, `type`, `match`, `obj`, `cell`, `macro` — eight surface forms, and a macro system that lets you build anything you need from them.
 
 The surface compiler handles safety. The kernel compiler handles JavaScript generation. Neither needs to understand the other's domain. And underneath both, it's the same architecture McCarthy stumbled upon in 1960, the same architecture Steele and Sussman refined in 1975, the same architecture the Scheme reports progressively distilled through 1998: a small core, a macro system, and the conviction that most complexity is an illusion that dissolves when you find the right primitives.
