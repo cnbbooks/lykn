@@ -1,0 +1,9 @@
+## Why "lykn"?
+
+The name means *good luck* in Norwegian, *luck* in Swedish, and — if you squint at the Icelandic with the right sort of imagination — *closure*. But names, like parentheses, accrete meaning beyond their etymology.
+
+Lichen is not a single organism. It is a symbiosis — a fungus and an alga, wrapped so intimately around each other that for centuries botanists classified the composite as one thing. The fungus provides structure: a scaffolding that anchors to rock, bark, or soil, protecting the partnership from desiccation and ultraviolet light. The alga provides energy: photosynthesis, the conversion of light to sugar, the metabolic engine that keeps the whole arrangement alive. Neither thrives alone. Together, they colonize environments that would defeat either partner — arctic tundra, volcanic rock, the exposed faces of desert cliffs.
+
+lykn is two languages in symbiosis. The kernel provides structure: a stable, thin mapping to JavaScript's AST that generates clean output and handles the mechanical business of code generation. The surface provides safety: type annotations, immutable bindings, exhaustive pattern matching, contracts. Neither layer needs to understand the other's domain. Together, they provide something that neither JavaScript alone (structure without safety) nor a standalone type system alone (safety without structure) can achieve.
+
+The project's logo is derived from the lichen paintings of Vigdís Ljósadóttir — intricate, organic forms that emerge from the interplay of structure and colour, much as lykn's behaviour emerges from the interplay of kernel and surface. It seemed appropriate. Lichens are among the oldest living things on earth. Lisps are among the oldest living languages in computing. Both persist by being, at their core, an elegant answer to the question of how two very different things can become one thing that is greater than either.
