@@ -21,6 +21,14 @@
     * [Why "lykn"?](part0/chapter0/4-why-lykn.md)
     * [What This Book Is](part0/chapter0/5-what-this-book-is.md)
     * [Beautiful Plumage](part0/chapter0/6-closing.md)
+  * [Ch 1. Getting Started]()
+    * [The Spanish Inquisition](part0/chapter1/0-opening.md)
+    * [Installing Lykn](part0/chapter1/1-installing.md)
+    * [Your First Program](part0/chapter1/2-first-program.md)
+    * [Running Lykn Code](part0/chapter1/3-running.md)
+    * [What Just Happened?](part0/chapter1/4-what-just-happened.md)
+    * [What You'll Need for This Book](part0/chapter1/5-what-youll-need.md)
+    * [Amongst Our Weaponry](part0/chapter1/6-closing.md)
 
 --------------------
 
