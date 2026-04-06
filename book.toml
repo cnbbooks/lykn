@@ -15,6 +15,7 @@ build-dir = "book"
 command = "mdbook-mermaid"
 
 [output.html]
+no-section-label = true
 default-theme = "lfe-pdp"
 preferred-dark-theme = "lfe-pdp"
 additional-js = ["js/mermaid.min.js", "js/mermaid-init.js"]

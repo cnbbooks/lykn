@@ -54,6 +54,19 @@
 
 --------------------
 
+* [Part II — The Fundamentals](part2/README.md)
+  * [Ch 4. Bindings, Scope, and Values]()
+    * [The Bridge of Death](part2/chapter4/0-opening.md)
+    * [bind: One Form to Rule Them All](part2/chapter4/1-bind.md)
+    * [Why Not let and var?](part2/chapter4/2-why-not-let-and-var.md)
+    * [Scope](part2/chapter4/3-scope.md)
+    * [The Global Scope](part2/chapter4/4-global-scope.md)
+    * [Shadowing](part2/chapter4/5-shadowing.md)
+    * [What About Mutation?](part2/chapter4/6-what-about-mutation.md)
+    * [The Gorge of Eternal undefined](part2/chapter4/7-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
