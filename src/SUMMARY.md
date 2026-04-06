@@ -64,6 +64,15 @@
     * [Shadowing](part2/chapter4/5-shadowing.md)
     * [What About Mutation?](part2/chapter4/6-what-about-mutation.md)
     * [The Gorge of Eternal undefined](part2/chapter4/7-closing.md)
+  * [Ch 5. Types and Values]()
+    * [The Black Knight](part2/chapter5/0-opening.md)
+    * [The Seven Primitive Types](part2/chapter5/1-seven-primitives.md)
+    * [Lykn's Type Keywords](part2/chapter5/2-type-keywords.md)
+    * [Type Coercion](part2/chapter5/3-type-coercion.md)
+    * [Equality in Lykn](part2/chapter5/4-equality.md)
+    * [Truthiness](part2/chapter5/5-truthiness.md)
+    * [Primitives Are Values](part2/chapter5/6-primitives-are-values.md)
+    * [Just a Flesh Wound](part2/chapter5/7-closing.md)
 
 --------------------
 
