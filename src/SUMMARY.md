@@ -42,6 +42,15 @@
     * [The Reader](part1/chapter2/5-the-reader.md)
     * [Surface Is a Superset](part1/chapter2/6-superset.md)
     * [Grant Approved](part1/chapter2/7-closing.md)
+  * [Ch 3. Atoms, Lists, and the Reader]()
+    * [The Argument Clinic](part1/chapter3/0-opening.md)
+    * [What Is an S-Expression?](part1/chapter3/1-what-is-an-s-expression.md)
+    * [The Five Node Types](part1/chapter3/2-five-node-types.md)
+    * [Prefix Notation](part1/chapter3/3-prefix-notation.md)
+    * [Colon Syntax](part1/chapter3/4-colon-syntax.md)
+    * [camelCase Conversion](part1/chapter3/5-camelcase.md)
+    * [What the Reader Doesn't Do](part1/chapter3/6-what-the-reader-doesnt-do.md)
+    * [Is This the Right Room?](part1/chapter3/7-closing.md)
 
 --------------------
 
