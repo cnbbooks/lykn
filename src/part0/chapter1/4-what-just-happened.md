@@ -4,10 +4,10 @@ You have now written Lykn code, compiled it, and run the output. Something happe
 
 ### The Pipeline
 
-Lykn compilation is a four-stage pipeline:
+The Rust compiler processes your code through six stages:
 
 ```
-.lykn source → reader → surface compiler → kernel compiler → JavaScript
+.lykn source → reader → expander → classifier → analyzer → emitter → codegen → JavaScript
 ```
 
 Each stage does one thing and passes its output to the next.
@@ -18,19 +18,27 @@ The reader parses your text into a tree of s-expressions. It understands four ki
 
 The reader doesn't know what `bind` means. It doesn't know that `func` is special or that `:string` is a type annotation. It just builds a tree. Meaning comes later.
 
-### Stage 2: The Surface Compiler
+### Stage 2: The Expander
 
-The surface compiler takes the reader's tree and transforms surface forms into kernel forms. When it sees `(bind x 1)`, it emits `(const x 1)`. When it sees `(func greet :args (:string name) ...)`, it emits a `(function greet (name) ...)` with type-checking code injected.
+If your code uses macros — either built-in surface forms or user-defined macros — the expander resolves them. User macros involve a Deno subprocess for evaluation; built-in surface forms are handled by the compiler directly. After expansion, the tree contains only forms the later stages understand.
 
-This is where safety lives. The surface compiler inserts `typeof` checks for type annotations, generates exhaustive if-chains for `match` expressions, wraps `cell` containers in `{ value: x }` objects, and transforms threading macros into nested function calls. Everything the surface language promises — immutability, type safety, pattern matching — is implemented here, by rewriting surface forms into kernel forms that the next stage can handle.
+### Stage 3: The Classifier
 
-### Stage 3: The Kernel Compiler
+The classifier walks the expanded tree and produces a typed surface AST. It dispatches on each form's head symbol — recognizing `bind`, `func`, `type`, `match`, and the rest of the surface vocabulary — and builds a structured representation that the analyzer can reason about.
 
-The kernel compiler takes kernel forms — `const`, `function`, `if`, `import`, and roughly twenty-seven others — and transforms them into ESTree nodes. ESTree is the standard AST (Abstract Syntax Tree) format for JavaScript, used by tools like ESLint, Prettier, and Babel. Each kernel form maps to one or more ESTree node types. `const` becomes a `VariableDeclaration`. `function` becomes a `FunctionDeclaration`. `if` becomes an `IfStatement`. The mapping is mechanical and nearly one-to-one.
+### Stage 4: The Analyzer
 
-### Stage 4: astring
+The analyzer performs static checks: building a type registry for algebraic data types, checking `match` exhaustiveness (does every case get handled?), tracking scope for unused bindings and undefined references, and verifying contracts. This is where the surface language earns its safety guarantees.
 
-The ESTree AST is handed to [astring](https://github.com/davidbonnet/astring), an open-source JavaScript code generator that pretty-prints AST nodes into formatted source code. This is why the compiled output looks hand-written — astring produces clean, properly indented JavaScript with no transpiler artefacts, no source maps referencing a framework, and no runtime imports.
+### Stage 5: The Emitter
+
+The emitter transforms the analyzed surface AST into kernel s-expressions. `bind` becomes `const`. `func` becomes `function` with injected type checks. `match` becomes a chain of `if` tests. `cell` becomes `{ value: x }`. The output is a tree of kernel forms — the s-expression spelling of JavaScript.
+
+### Stage 6: The Codegen
+
+The codegen walks the kernel forms and produces JavaScript text directly. `const` becomes `const x = ...;`. `function` becomes `function f(...) { ... }`. The mapping is mechanical and nearly one-to-one. The codegen is pure Rust with no external dependencies — no AST format, no code generation library, just string building guided by the kernel form structure.
+
+This is why the compiled output looks hand-written — the codegen produces clean, properly indented JavaScript with no transpiler artefacts, no source maps referencing a framework, and no runtime imports.
 
 ### The Whole Journey
 
@@ -41,7 +49,7 @@ When you wrote:
 (console:log greeting)
 ```
 
-The reader produced a tree: two lists, each containing atoms and a string. The surface compiler saw `bind` and emitted `const`. The kernel compiler turned `const` into a `VariableDeclaration` ESTree node and the function call into a `CallExpression`. astring printed:
+The reader produced a tree: two lists, each containing atoms and a string. The classifier identified `bind` as a surface binding form. The emitter rewrote it as `const`. The codegen produced:
 
 ```javascript
 const greeting = "Hello, World!";

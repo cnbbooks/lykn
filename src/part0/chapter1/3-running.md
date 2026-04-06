@@ -4,31 +4,32 @@ There are three ways to run Lykn, each suited to a different context. Think of t
 
 ### The CLI
 
-The primary workflow is compile-and-run via Deno. From the Lykn project directory:
+The primary workflow is compile-then-run. The Lykn compiler produces JavaScript; you run it with any JavaScript runtime:
 
 ```sh
-deno eval "import {lykn} from './src/index.js'; \
-  const src = await Deno.readTextFile('hello.lykn'); \
-  console.log(lykn(src))"
+lykn compile hello.lykn -o hello.js
+deno run hello.js
 ```
 
-This reads a `.lykn` file, compiles it to JavaScript, and prints the output. To *run* the compiled code instead of printing it, replace `console.log` with `eval`:
+That's the full cycle. Compile to a file, run the file. For quick iteration, you can pipe the output directly:
 
 ```sh
-deno eval "import {lykn} from './src/index.js'; \
-  const src = await Deno.readTextFile('hello.lykn'); \
-  eval(lykn(src))"
+lykn compile hello.lykn | deno run -
 ```
 
-For a more permanent setup, you can write a small runner script:
+Or compile to stdout and inspect the JavaScript before running it:
 
-```javascript
-import { lykn } from './src/index.js';
-const src = await Deno.readTextFile(Deno.args[0]);
-eval(lykn(src));
+```sh
+lykn compile hello.lykn
 ```
 
-Save that as `run.js` and invoke it with `deno run -A run.js hello.lykn`. The examples in this book assume some such convenience exists.
+The `--strip-assertions` flag removes all type checks and contracts from the output, producing the minimal JavaScript for production deployment:
+
+```sh
+lykn compile hello.lykn --strip-assertions -o hello.min.js
+```
+
+Deno is shown here, but the output is standard JavaScript — Node.js, Bun, or any other runtime will work.
 
 ### The Browser
 
@@ -52,9 +53,9 @@ await lykn.load('/app.lykn')
 
 To build the browser bundle from source: `deno task build`. The full browser story — loading external `.lykn` files, working with the DOM, inline macros — is covered in later chapters. For now, know that it exists and that it works.
 
-### The Rust Tools
+### The Formatter and Checker
 
-The Rust binary (`./bin/lykn` after `cargo build --release`) provides two commands:
+The same `lykn` binary that compiles your code also formats and checks it:
 
 ```sh
 lykn fmt hello.lykn          # format to stdout
@@ -62,8 +63,4 @@ lykn fmt -w hello.lykn       # format in place
 lykn check hello.lykn        # syntax check
 ```
 
-These are developer tools — they don't compile to JavaScript. The formatter produces consistently indented Lykn source. The syntax checker validates that your s-expressions are well-formed without running the full compilation pipeline. Both are fast (they're Rust) and have no runtime dependencies.
-
-### What's Coming
-
-A standalone `lykn compile` command, a Deno-installable package, and a watch mode are all on the roadmap. The compilation pipeline itself — reader, surface compiler, kernel compiler, astring — is stable and tested (555 tests at last count). What's missing is packaging, not capability. The parrot can speak; it just hasn't been given a proper stage yet.
+The formatter produces consistently indented Lykn source. The syntax checker validates that your s-expressions are well-formed without running the full compilation pipeline. Both are fast — they're the same Rust binary — and have no runtime dependencies.

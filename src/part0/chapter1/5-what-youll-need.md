@@ -4,11 +4,11 @@
 
 To follow along with the examples in this book, you need:
 
-- **Deno** (2.x or later) — the runtime that powers the Lykn compiler
+- **The Lykn compiler** — a single Rust binary, built as described in the installation section above
+- **A JavaScript runtime** — Deno, Node.js, or Bun, to run the compiled output. This book uses Deno in its examples.
 - **A text editor** — any editor that can save a file with a `.lykn` extension. Lykn files are plain text. If your editor supports Lisp or Scheme syntax highlighting, enable it — the parenthesis matching alone is worth it.
-- **The Lykn repository** — cloned as described in the installation section above
 
-That's the list. There is no build system to configure, no `package.json` to maintain, no `node_modules` to summon from the void. The compiler is JavaScript running on Deno. The output is JavaScript with no dependencies. The Rust tooling is optional.
+That's the list. There is no build system to configure, no `package.json` to maintain, no `node_modules` to summon from the void. The compiler is a self-contained Rust binary. The output is JavaScript with no dependencies.
 
 ### What You Should Know
 

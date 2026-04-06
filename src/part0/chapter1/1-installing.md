@@ -4,67 +4,66 @@ Lykn is a young language, and young languages have the charming habit of being i
 
 ### Prerequisites
 
-You need two things: **Deno** and **Git**. If you already have both, skip ahead. If not:
+You need two things: **Rust** and **Git**. If you already have both, skip ahead. If not:
 
-**Deno** is the JavaScript runtime Lykn uses. Not Node.js — Deno. It's a single binary with built-in TypeScript support, a security-first permission model, and no `node_modules` directory. Install it with:
+**Rust** is the language the Lykn compiler is written in. Install it via rustup:
 
 ```sh
-curl -fsSL https://deno.land/install.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Or, on macOS with Homebrew:
+Verify with `cargo --version`. Any recent stable Rust will do.
+
+**Git** is Git. You almost certainly have it already. If `git --version` prints something, you're fine.
+
+You will also want **Deno** (or any JavaScript runtime) to *run* the compiled output, since the compiler produces JavaScript. But Deno is not required for compilation itself — that's pure Rust.
 
 ```sh
 brew install deno
 ```
 
-Verify with `deno --version`. You want Deno 2.x or later.
-
-**Git** is Git. You almost certainly have it already. If `git --version` prints something, you're fine.
-
 ### Getting Lykn
 
-Clone the repository and build the Rust tooling:
+Clone the repository and build the compiler:
 
 ```sh
 git clone https://github.com/oxur/lykn.git
 cd lykn
-```
-
-That's it for the compiler. The Lykn-to-JavaScript compiler is written in JavaScript and runs under Deno — no build step required. You can compile Lykn source code the moment the clone finishes.
-
-### The Rust Tooling (Optional)
-
-If you have Rust installed (`rustup` and `cargo`), you can also build the Rust-based formatter and syntax checker:
-
-```sh
 cargo build --release
 cp ./target/release/lykn ./bin/
 ```
 
-This gives you `lykn fmt` for formatting and `lykn check` for syntax checking. These are convenience tools, not required for compilation. The compiler itself is the JavaScript pipeline running on Deno.
-
-It is worth noting that `deno` itself is _also_ written in Rust.
+That's it. You now have a self-contained `lykn` binary that compiles `.lykn` files to JavaScript with no runtime dependencies.
 
 ### Verifying the Installation
 
-Run the surface syntax example that ships with the project:
+Compile and run the surface syntax example that ships with the project:
 
 ```sh
-deno eval "import {lykn} from './src/index.js'; \
-  const src = await Deno.readTextFile('examples/surface/main.lykn'); \
-  eval(lykn(src))"
+lykn compile examples/surface/main.lykn -o /tmp/main.js
+deno run /tmp/main.js
 ```
 
 You should see output like:
 
-```
+```text
 hello, world, lykn!
 S-expression syntax for JavaScript
 ```
 
-If you do, the compiler is working. If you don't, check that you're in the `lykn` directory and that Deno is on your path.
+If you do, the compiler is working. If you don't, check that `./bin/lykn` is on your path (or use `./bin/lykn compile ...` explicitly).
 
-### A Note on the Workflow
+### The Full Toolkit
 
-The observant reader will have noticed that the compile-and-run command above is somewhat... verbose. This is the current state of affairs. A proper `lykn compile` CLI and a `deno install`-able package are planned. For the examples in this book, we'll use shorter incantations — typically a small runner script or `deno eval` one-liner. The mechanics of _how_ you invoke the compiler will improve; the mechanics of _what_ it does will not change.
+The `lykn` binary does more than compile:
+
+```sh
+lykn compile main.lykn                    # compile to stdout
+lykn compile main.lykn -o main.js         # compile to file
+lykn compile main.lykn --strip-assertions # omit type checks / contracts
+lykn fmt main.lykn                        # format to stdout
+lykn fmt -w main.lykn                     # format in place
+lykn check main.lykn                      # syntax check
+```
+
+One binary, no runtime dependencies, no configuration files. The Inquisition, one suspects, would have preferred something more complicated.

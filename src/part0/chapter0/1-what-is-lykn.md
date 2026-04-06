@@ -54,4 +54,4 @@ Surface forms compile to kernel forms. Kernel forms compile to JavaScript. At no
 
 ### Suspension of Belief
 
-It is hoped that, for now, you will take the above on faith. This faith will be rewarded in Chapter 2, where the two-layer architecture will be explained in detail — how surface forms compile to kernel forms, how kernel forms compile to ESTree, and how ESTree becomes the JavaScript you deploy. Until then, trust that the mechanism works and focus on the idioms.
+It is hoped that, for now, you will take the above on faith. This faith will be rewarded in Chapter 2, where the two-layer architecture will be explained in detail — how surface forms compile to kernel forms, how kernel forms become JavaScript, and why the whole process involves no runtime dependencies whatsoever. Until then, trust that the mechanism works and focus on the idioms.
