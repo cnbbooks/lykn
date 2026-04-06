@@ -32,7 +32,16 @@
 
 --------------------
 
-* [Part I - Getting Started](part1/README.md)
+* [Part I — The Architecture](part1/README.md)
+  * [Ch 2. Two Languages in a Trenchcoat]()
+    * [The Ministry of Silly Walks](part1/chapter2/0-opening.md)
+    * [Why Two Layers?](part1/chapter2/1-why-two-layers.md)
+    * [The Kernel](part1/chapter2/2-the-kernel.md)
+    * [The Surface](part1/chapter2/3-the-surface.md)
+    * [The Pipeline](part1/chapter2/4-the-pipeline.md)
+    * [The Reader](part1/chapter2/5-the-reader.md)
+    * [Surface Is a Superset](part1/chapter2/6-superset.md)
+    * [Grant Approved](part1/chapter2/7-closing.md)
 
 --------------------
 

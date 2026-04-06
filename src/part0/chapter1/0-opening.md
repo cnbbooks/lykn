@@ -1,8 +1,8 @@
 ## The Netscape Inquisition
 
-Alice, excitedly twiching about the big reveal, drops her laptop down in front of Bob, who then stares agape at her new application, open in the many panels of her IDE.
+Alice, excitedly twitching about the big reveal, drops her laptop down in front of Bob, who then stares agape at her new application, open in the many panels of her IDE.
 
-Utterly flumoxed, Bob attempts to speak with several unsucessful attempts. Rallying his forces, he finally stutters, "Th-th-this ... this isn't whatsit! You said, you said ... it was ... _JavaScript!_ What the hell am I ..."
+Utterly flummoxed, Bob attempts to speak with several unsuccessful attempts. Rallying his forces, he finally stutters, "Th-th-this ... this isn't whatsit! You said, you said ... it was ... _JavaScript!_ What the hell am I ..."
 
 "It _compiles_ to JavaScript!" she proclaimed triumphantly. "You were complaining only yesterday that JavaScript should just be considered 'a machine-readable language' and we should all write 'something else that compiles to it.'"
 
