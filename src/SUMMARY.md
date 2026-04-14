@@ -166,6 +166,15 @@
     * [Working with JS Libraries](part3/chapter14/3-library-patterns.md)
     * [The Interop Spectrum](part3/chapter14/4-interop-spectrum.md)
     * [The Holy Hand Grenade](part3/chapter14/5-closing.md)
+  * [Ch 15. Destructuring, Spread, and Rest]()
+    * [The Black Knight, Reassembled](part3/chapter15/0-opening.md)
+    * [Object Destructuring](part3/chapter15/1-object-destructuring.md)
+    * [Array Destructuring](part3/chapter15/2-array-destructuring.md)
+    * [Destructuring in Function Parameters](part3/chapter15/3-parameter-destructuring.md)
+    * [spread and rest](part3/chapter15/4-spread-rest.md)
+    * [Destructuring and Immutable Updates](part3/chapter15/5-with-immutable-updates.md)
+    * [Edge Cases](part3/chapter15/6-edge-cases.md)
+    * [Only a Destructuring](part3/chapter15/7-closing.md)
 
 --------------------
 
