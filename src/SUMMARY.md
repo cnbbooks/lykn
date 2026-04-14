@@ -96,6 +96,16 @@
     * [Recursion](part2/chapter7/9-recursion.md)
     * [A Note on this](part2/chapter7/10-no-this.md)
     * [A Mandate from the Lambda Calculus](part2/chapter7/11-closing.md)
+  * [Ch 8. Contracts and Multi-Clause Dispatch]()
+    * [The Knights Who Say Ni](part2/chapter8/0-opening.md)
+    * [Contracts: pre and post](part2/chapter8/1-contracts.md)
+    * [The ~ Placeholder](part2/chapter8/2-tilde.md)
+    * [Multi-Clause Dispatch](part2/chapter8/3-multi-clause.md)
+    * [Overlap Is a Compile Error](part2/chapter8/4-overlap.md)
+    * [The Dev/Prod Split](part2/chapter8/5-strip-assertions.md)
+    * [The Erlang Heritage](part2/chapter8/6-erlang-heritage.md)
+    * [Design by Contract](part2/chapter8/7-design-by-contract.md)
+    * [A Nice Shrubbery](part2/chapter8/8-closing.md)
 
 --------------------
 
