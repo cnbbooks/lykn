@@ -22,24 +22,26 @@ This table is worth memorizing. Every type keyword in Lykn maps to a specific ru
 
 ### Where Type Keywords Appear
 
-Type keywords appear in four places:
+Type keywords appear in four places, and all four generate enforcement:
 
 ```lisp
-;; 1. Function parameters
+;; 1. Function parameters — runtime check
 (func add
   :args (:number a :number b)
   :returns :number
   :body (+ a b))
 
-;; 2. Anonymous function parameters
+;; 2. Anonymous function parameters — runtime check
 (fn (:number x) (* x 2))
 
-;; 3. Binding annotations
-(bind :number result (compute-something))
-
-;; 4. ADT constructor fields
+;; 3. ADT constructor fields — runtime check
 (type Circle (Circle :number radius))
+
+;; 4. Binding annotations — runtime check (non-literals) or compile-time check (literals)
+(bind :number result (compute-something))
 ```
+
+The same type keywords produce the same runtime checks everywhere. `func`, `fn`, `type`, and `bind` all use the identical check expressions from the table above. For `bind` specifically, the compiler is smart about literals: `(bind :number x 42)` emits no runtime check because `42` is obviously a number. `(bind :number x "hello")` is a compile error because the mismatch is statically visible. Only non-literal initializers get runtime checks.
 
 ### What the Check Looks Like
 

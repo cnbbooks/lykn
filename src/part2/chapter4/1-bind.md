@@ -22,14 +22,14 @@ const scores = [98, 87, 92, 100];
 
 ### Type Annotations
 
-For literal values — strings, numbers, booleans — the type is self-evident, and no annotation is needed. For non-literal initializers, a type annotation documents the expected type and emits a development-mode check:
+For literal values — strings, numbers, booleans — the type is self-evident, and no annotation is needed. For non-literal initializers, a type annotation enforces the expected type at runtime:
 
 ```lisp
-;; Literals — type is obvious
+;; Literals — type is obvious, annotation optional
 (bind name "Duncan")
 (bind count 42)
 
-;; Non-literals — annotation recommended
+;; Non-literals — annotation generates a runtime check
 (bind :number result (parse-float input))
 (bind :string greeting (template "Hello, " name))
 ```
@@ -37,13 +37,13 @@ For literal values — strings, numbers, booleans — the type is self-evident, 
 ```javascript
 const result = parseFloat(input);
 if (typeof result !== "number" || Number.isNaN(result))
-  throw new TypeError("bind: 'result' expected number, got " + typeof result);
+  throw new TypeError("bind 'result': expected number, got " + typeof result);
 const greeting = `Hello, ${name}`;
 if (typeof greeting !== "string")
-  throw new TypeError("bind: 'greeting' expected string, got " + typeof greeting);
+  throw new TypeError("bind 'greeting': expected string, got " + typeof greeting);
 ```
 
-The type keyword (`:number`, `:string`, `:boolean`, etc.) sits between `bind` and the name. Pass `--strip-assertions` at compile time and these checks vanish for production, leaving behind nothing but the clean `const` declaration.
+The type keyword (`:number`, `:string`, `:boolean`, etc.) sits between `bind` and the name. The compiler is smart about when to check: if the initializer is a literal whose type is obvious — `42` is a number, `"hello"` is a string — no runtime check is emitted. If the types are *incompatible* — `(bind :number name "hello")` — it's a compile error. For non-literal initializers, the check fires at runtime. Pass `--strip-assertions` and all checks vanish for production.
 
 ### What `bind` Is Not
 
