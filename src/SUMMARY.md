@@ -73,6 +73,16 @@
     * [Truthiness](part2/chapter5/5-truthiness.md)
     * [Primitives Are Values](part2/chapter5/6-primitives-are-values.md)
     * [Just a Flesh Wound](part2/chapter5/7-closing.md)
+  * [Ch 6. Operators and Expressions]()
+    * [The Ex-Precedence Table](part2/chapter6/0-opening.md)
+    * [Prefix Notation for Operators](part2/chapter6/1-prefix-operators.md)
+    * [Arithmetic Operators](part2/chapter6/2-arithmetic.md)
+    * [Comparison Operators](part2/chapter6/3-comparison.md)
+    * [Logical Operators](part2/chapter6/4-logical.md)
+    * [The Conditional Expression](part2/chapter6/5-conditional.md)
+    * [Assignment and Update Operators](part2/chapter6/6-assignment.md)
+    * [Unary and Bitwise Operators](part2/chapter6/7-unary-and-bitwise.md)
+    * [Squawk](part2/chapter6/8-closing.md)
 
 --------------------
 
