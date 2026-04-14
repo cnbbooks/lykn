@@ -159,6 +159,13 @@
     * [Immutable Updates](part3/chapter13/7-immutable-updates.md)
     * [Putting It Together](part3/chapter13/8-putting-together.md)
     * [The Violence Has Been Contained](part3/chapter13/9-closing.md)
+  * [Ch 14. JS Interop]()
+    * [The Killer Rabbit](part3/chapter14/0-opening.md)
+    * [The js: Namespace](part3/chapter14/1-js-namespace.md)
+    * [Kernel Passthrough](part3/chapter14/2-kernel-passthrough.md)
+    * [Working with JS Libraries](part3/chapter14/3-library-patterns.md)
+    * [The Interop Spectrum](part3/chapter14/4-interop-spectrum.md)
+    * [The Holy Hand Grenade](part3/chapter14/5-closing.md)
 
 --------------------
 
