@@ -148,6 +148,17 @@
     * [Enumerability](part3/chapter12/6-enumerability.md)
     * [Getters and Setters](part3/chapter12/7-getters-setters.md)
     * [Both in Stock](part3/chapter12/8-closing.md)
+  * [Ch 13. Mutation, Threading, and Surface Idioms]()
+    * [Dennis Returns](part3/chapter13/0-opening.md)
+    * [The Problem with Shared Mutable State](part3/chapter13/1-shared-mutable-state.md)
+    * [Cells: Controlled Mutation](part3/chapter13/2-cells.md)
+    * [When to Use Cells](part3/chapter13/3-when-to-cell.md)
+    * [Threading Macros](part3/chapter13/4-threading.md)
+    * [Nil-Safe Threading](part3/chapter13/5-nil-safe.md)
+    * [Conditional Binding](part3/chapter13/6-if-let.md)
+    * [Immutable Updates](part3/chapter13/7-immutable-updates.md)
+    * [Putting It Together](part3/chapter13/8-putting-together.md)
+    * [The Violence Has Been Contained](part3/chapter13/9-closing.md)
 
 --------------------
 
