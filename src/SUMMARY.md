@@ -115,6 +115,17 @@
     * [Exception Handling](part2/chapter9/5-exceptions.md)
     * [A Note on match](part2/chapter9/6-match-preview.md)
     * [Nobody Expects Pattern Matching](part2/chapter9/7-closing.md)
+  * [Ch 10. Types and Pattern Matching]()
+    * [The Bridge of Death, Part Two](part2/chapter10/0-opening.md)
+    * [Why Algebraic Data Types?](part2/chapter10/1-why-adts.md)
+    * [type: Defining Algebraic Data Types](part2/chapter10/2-type.md)
+    * [match: Exhaustive Pattern Matching](part2/chapter10/3-match.md)
+    * [Guards](part2/chapter10/4-guards.md)
+    * [Structural Matching on Plain Objects](part2/chapter10/5-structural.md)
+    * [match Is an Expression](part2/chapter10/6-match-expression.md)
+    * [Exhaustiveness](part2/chapter10/7-exhaustiveness.md)
+    * [Option and Result](part2/chapter10/8-option-result.md)
+    * [What Do You Mean, a Some or a None?](part2/chapter10/9-closing.md)
 
 --------------------
 
