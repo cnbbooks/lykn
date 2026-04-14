@@ -83,6 +83,19 @@
     * [Assignment and Update Operators](part2/chapter6/6-assignment.md)
     * [Unary and Bitwise Operators](part2/chapter6/7-unary-and-bitwise.md)
     * [Squawk](part2/chapter6/8-closing.md)
+  * [Ch 7. Functions — func, fn, and lambda]()
+    * [The Constitutional Peasants](part2/chapter7/0-opening.md)
+    * [func: Named Functions](part2/chapter7/1-func.md)
+    * [Zero-Arg Shorthand](part2/chapter7/2-zero-arg.md)
+    * [fn and lambda: Anonymous Functions](part2/chapter7/3-fn-lambda.md)
+    * [Closures](part2/chapter7/4-closures.md)
+    * [Higher-Order Functions](part2/chapter7/5-higher-order.md)
+    * [Parameters in Depth](part2/chapter7/6-parameters.md)
+    * [The Kernel Underneath](part2/chapter7/7-kernel-underneath.md)
+    * [Functions as Values](part2/chapter7/8-functions-as-values.md)
+    * [Recursion](part2/chapter7/9-recursion.md)
+    * [A Note on this](part2/chapter7/10-no-this.md)
+    * [A Mandate from the Lambda Calculus](part2/chapter7/11-closing.md)
 
 --------------------
 
