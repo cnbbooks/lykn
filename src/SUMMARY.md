@@ -106,6 +106,15 @@
     * [The Erlang Heritage](part2/chapter8/6-erlang-heritage.md)
     * [Design by Contract](part2/chapter8/7-design-by-contract.md)
     * [A Nice Shrubbery](part2/chapter8/8-closing.md)
+  * [Ch 9. Control Flow]()
+    * [The Inquisition Returns](part2/chapter9/0-opening.md)
+    * [Conditionals: if](part2/chapter9/1-conditionals.md)
+    * [Loops](part2/chapter9/2-loops.md)
+    * [break and continue](part2/chapter9/3-break-continue.md)
+    * [switch](part2/chapter9/4-switch.md)
+    * [Exception Handling](part2/chapter9/5-exceptions.md)
+    * [A Note on match](part2/chapter9/6-match-preview.md)
+    * [Nobody Expects Pattern Matching](part2/chapter9/7-closing.md)
 
 --------------------
 
