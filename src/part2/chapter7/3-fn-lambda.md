@@ -23,7 +23,9 @@ In development:
 ```javascript
 (x) => {
   if (typeof x !== "number" || Number.isNaN(x))
-    throw new TypeError("anonymous fn: arg 'x' expected number, got " + typeof x);
+    throw new TypeError(
+      "anonymous: arg 'x' expected number, got " + typeof x);
+
   return x * 2;
 };
 ```

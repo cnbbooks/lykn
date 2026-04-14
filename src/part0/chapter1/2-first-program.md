@@ -48,11 +48,13 @@ function greet(name) {
   if (typeof name !== "string")
     throw new TypeError(
       "greet: arg 'name' expected string, got " + typeof name);
+
   const result__gensym0 = "Hello, " + name + "!";
   if (typeof result__gensym0 !== "string")
     throw new TypeError(
-      "greet: return 'result__gensym0' expected string, got "
+      "greet: return value expected string, got "
       + typeof result__gensym0);
+
   return result__gensym0;
 }
 console.log(greet("World"));

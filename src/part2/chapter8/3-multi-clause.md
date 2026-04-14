@@ -19,15 +19,15 @@ Different numbers of arguments:
 
 ```javascript
 function greet(...args) {
-  if (args.length === 1 && typeof args[0] === "string") {
-    const name = args[0];
-    return `Hello, ${name}`;
-  }
   if (args.length === 2 && typeof args[0] === "string"
       && typeof args[1] === "string") {
     const greeting = args[0];
     const name = args[1];
     return `${greeting}, ${name}`;
+  }
+  if (args.length === 1 && typeof args[0] === "string") {
+    const name = args[0];
+    return `Hello, ${name}`;
   }
   throw new TypeError("greet: no matching clause for arguments");
 }

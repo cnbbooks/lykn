@@ -18,17 +18,23 @@ In development mode:
 ```javascript
 function deposit(amount, account) {
   if (typeof amount !== "number" || Number.isNaN(amount))
-    throw new TypeError("deposit: arg 'amount' expected number, got " + typeof amount);
+    throw new TypeError(
+      "deposit: arg 'amount' expected number, got " + typeof amount);
+
   if (typeof account !== "object" || account === null)
-    throw new TypeError("deposit: arg 'account' expected object, got " + typeof account);
+    throw new TypeError(
+      "deposit: arg 'account' expected object, got " + typeof account);
+
   if (!(amount > 0))
     throw new Error(
-      'deposit: pre-condition failed: (> amount 0) — caller blame');
-  const result = {...account, balance: account.balance + amount};
-  if (!(result.balance > account.balance))
+      "deposit: pre-condition failed: (> amount 0) — caller blame");
+
+  const result__gensym0 = {...account, balance: account["balance"] + amount};
+  if (!(result__gensym0["balance"] > account["balance"]))
     throw new Error(
-      'deposit: post-condition failed: (> (get ~ :balance) (get account :balance)) — callee blame');
-  return result;
+      "deposit: post-condition failed: (> (get ~ :balance) (get account :balance)) — callee blame");
+
+  return result__gensym0;
 }
 ```
 
@@ -36,7 +42,7 @@ With `--strip-assertions`:
 
 ```javascript
 function deposit(amount, account) {
-  return {...account, balance: account.balance + amount};
+  return {...account, balance: account["balance"] + amount};
 }
 ```
 

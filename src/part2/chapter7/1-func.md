@@ -14,12 +14,18 @@
 ```javascript
 function add(a, b) {
   if (typeof a !== "number" || Number.isNaN(a))
-    throw new TypeError("add: arg 'a' expected number, got " + typeof a);
+    throw new TypeError(
+      "add: arg 'a' expected number, got " + typeof a);
+
   if (typeof b !== "number" || Number.isNaN(b))
-    throw new TypeError("add: arg 'b' expected number, got " + typeof b);
+    throw new TypeError(
+      "add: arg 'b' expected number, got " + typeof b);
+
   const result__gensym0 = a + b;
   if (typeof result__gensym0 !== "number" || Number.isNaN(result__gensym0))
-    throw new TypeError("add: return value expected number, got " + typeof result__gensym0);
+    throw new TypeError(
+      "add: return value expected number, got " + typeof result__gensym0);
+
   return result__gensym0;
 }
 ```

@@ -1,48 +1,59 @@
 ## Parameters in Depth
 
-### Default Values
+### Surface Parameters: Typed Pairs Only
 
-Use `default` in the parameter list to provide a fallback value:
+`func`'s `:args` list accepts strictly alternating type-name pairs: `:type name :type name`. This is by design — the surface language keeps parameter syntax simple and uniform.
 
 ```lisp
 (func greet
-  :args (:string name (default :string greeting "Hello"))
+  :args (:string name :number age)
   :returns :string
-  :body (template greeting ", " name "!"))
+  :body (template name " is " age " years old"))
+```
 
-(greet "World")            ;; → "Hello, World!"
-(greet "World" "Howdy")    ;; → "Howdy, World!"
+### Default Values and Rest Parameters
+
+Default values and rest parameters are available through kernel function forms, not through `func`'s `:args` syntax:
+
+```lisp
+;; Kernel: default parameter
+(function greet (name (default greeting "Hello"))
+  (return (template greeting ", " name "!")))
 ```
 
 ```javascript
 function greet(name, greeting = "Hello") {
-  // ... type checks ...
   return `${greeting}, ${name}!`;
 }
 ```
 
-The `default` form wraps the parameter: `(default :type name value)`. The type annotation applies to the parameter when a value is provided; the default must be type-compatible.
-
-### Rest Parameters
-
-Use `rest` to collect remaining arguments into an array:
-
 ```lisp
-(func log-with-level
-  :args (:string level (rest :any messages))
-  :body (console:log level messages))
-
-(log-with-level "INFO" "server started" "port 3000")
+;; Kernel: rest parameter
+(function log-all (level (rest messages))
+  (console:log level messages))
 ```
 
 ```javascript
-function logWithLevel(level, ...messages) {
-  // ... type check on level ...
+function logAll(level, ...messages) {
   console.log(level, messages);
 }
 ```
 
-The `rest` form wraps the final parameter: `(rest :type name)`. It collects all remaining arguments into an array. Only the last parameter can be a rest parameter.
+These are kernel forms — they compile to their JavaScript equivalents directly, without type checking. If you need default values or rest parameters with type checking, use multi-clause `func` dispatch (Ch 8) as the surface alternative:
+
+```lisp
+;; Surface alternative to default parameters
+(func greet
+  (:args (:string name)
+   :returns :string
+   :body (template "Hello, " name "!"))
+
+  (:args (:string greeting :string name)
+   :returns :string
+   :body (template greeting ", " name "!")))
+```
+
+The two-clause version provides the same behavior as a default parameter — call with one argument for the default greeting, two for a custom one — with full type checking on both clauses.
 
 ### Destructuring
 
