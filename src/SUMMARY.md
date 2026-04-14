@@ -129,6 +129,18 @@
 
 --------------------
 
+* [Part III — The Modern Toolkit](part3/README.md)
+  * [Ch 11. Strings and Template Literals]()
+    * [The Inquisition, Take Three](part3/chapter11/0-opening.md)
+    * [String Basics](part3/chapter11/1-string-basics.md)
+    * [The template Form](part3/chapter11/2-template.md)
+    * [Tagged Templates](part3/chapter11/3-tagged-templates.md)
+    * [String Concatenation](part3/chapter11/4-concatenation.md)
+    * [Unicode Essentials](part3/chapter11/5-unicode.md)
+    * [A Clean API](part3/chapter11/6-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
