@@ -138,6 +138,16 @@
     * [String Concatenation](part3/chapter11/4-concatenation.md)
     * [Unicode Essentials](part3/chapter11/5-unicode.md)
     * [A Clean API](part3/chapter11/6-closing.md)
+  * [Ch 12. Colon Syntax and Member Access]()
+    * [The Cheese Shop](part3/chapter12/0-opening.md)
+    * [Colon Syntax](part3/chapter12/1-colon-syntax.md)
+    * [Computed Access: get](part3/chapter12/2-get.md)
+    * [Keywords as Property Names](part3/chapter12/3-keywords-as-keys.md)
+    * [this and super](part3/chapter12/4-this-super.md)
+    * [Property Attributes and Descriptors](part3/chapter12/5-property-descriptors.md)
+    * [Enumerability](part3/chapter12/6-enumerability.md)
+    * [Getters and Setters](part3/chapter12/7-getters-setters.md)
+    * [Both in Stock](part3/chapter12/8-closing.md)
 
 --------------------
 
