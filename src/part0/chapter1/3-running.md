@@ -39,7 +39,7 @@ Lykn ships a browser bundle that lets you write s-expressions directly in HTML:
 <script src="dist/lykn-browser.dev.js"></script>
 <script type="text/lykn">
   (bind el (document:get-element-by-id "output"))
-  (= el:text-content "Hello from Lykn!")
+  (set! el:text-content "Hello from Lykn!")
 </script>
 ```
 

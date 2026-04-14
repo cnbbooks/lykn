@@ -9,8 +9,8 @@ Hyphens become camelCase boundaries. The character after a hyphen is uppercased,
 ```lisp
 my-function         ;; → myFunction
 get-element-by-id   ;; → getElementById
-is-valid?           ;; → isValid (trailing ? stripped)
-set-value!          ;; → setValue (trailing ! stripped)
+is-valid            ;; → isValid
+set-value           ;; → setValue
 ```
 
 ### Edge Cases

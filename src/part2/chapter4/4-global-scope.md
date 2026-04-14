@@ -8,7 +8,7 @@ Top-level `bind` forms in a Lykn program are module-scoped, not global. They're 
 
 ```lisp
 (bind name "Duncan")       ;; module-scoped, not global
-(export (bind version "0.3.0"))  ;; exported, visible to importers
+(export (bind version "0.4.0"))  ;; exported, visible to importers
 ```
 
 In JavaScript terms: the compiled `const name = "Duncan"` at the top of a module is scoped to that module. It's not `globalThis.name`. It's not `window.name`. It's just a local constant that happens to be at the top level.
