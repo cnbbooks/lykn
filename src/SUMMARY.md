@@ -197,6 +197,19 @@
 
 --------------------
 
+* [Part IV — Data Structures](part4/README.md)
+  * [Ch 18. Objects]()
+    * [The Knights Who Say Ni](part4/chapter18/0-opening.md)
+    * [obj: The Surface Form](part4/chapter18/1-obj.md)
+    * [Accessing and Updating Objects](part4/chapter18/2-access-update.md)
+    * [Object Utility Methods](part4/chapter18/3-object-methods.md)
+    * [The Prototype Chain](part4/chapter18/4-prototypes.md)
+    * [Copying Objects](part4/chapter18/5-copying.md)
+    * [Objects vs type](part4/chapter18/6-obj-vs-type.md)
+    * [NI! We Demand an Array!](part4/chapter18/7-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
