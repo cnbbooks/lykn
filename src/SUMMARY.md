@@ -216,6 +216,15 @@
     * [Iteration Patterns](part4/chapter19/5-iteration.md)
     * [Array-Like Objects](part4/chapter19/6-array-like.md)
     * [And There Was Much Rejoicing](part4/chapter19/7-closing.md)
+  * [Ch 20. Classes]()
+    * [The Knights Who Say class](part4/chapter20/0-opening.md)
+    * [Classes in Lykn: The Honest Position](part4/chapter20/1-honest-position.md)
+    * [Class Syntax in Lykn](part4/chapter20/2-class-syntax.md)
+    * [Fields and Private Members](part4/chapter20/3-fields-private.md)
+    * [Accessors and Static Members](part4/chapter20/4-accessors-static.md)
+    * [Inheritance](part4/chapter20/5-inheritance.md)
+    * [The Functional Alternative](part4/chapter20/6-functional-alternative.md)
+    * [NI! We Demand an Iterator!](part4/chapter20/7-closing.md)
 
 --------------------
 
