@@ -184,6 +184,16 @@
     * [alias Across the Language](part3/chapter16/5-alias-everywhere.md)
     * [Module Design](part3/chapter16/6-module-design.md)
     * [Bridge Closed for Maintenance](part3/chapter16/7-closing.md)
+  * [Ch 17. Async/Await and Promises]()
+    * [The Knights Who Say Ni (Preview)](part3/chapter17/0-opening.md)
+    * [Why Async?](part3/chapter17/1-why-async.md)
+    * [Promises](part3/chapter17/2-promises.md)
+    * [Async/Await in Lykn](part3/chapter17/3-async-await.md)
+    * [Error Handling in Async](part3/chapter17/4-error-handling.md)
+    * [Promise Combinators](part3/chapter17/5-combinators.md)
+    * [Sequential vs Parallel](part3/chapter17/6-sequential-parallel.md)
+    * [The Event Loop](part3/chapter17/7-event-loop.md)
+    * [Another Promise, Please](part3/chapter17/8-closing.md)
 
 --------------------
 
