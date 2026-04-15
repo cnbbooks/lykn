@@ -225,6 +225,15 @@
     * [Inheritance](part4/chapter20/5-inheritance.md)
     * [The Functional Alternative](part4/chapter20/6-functional-alternative.md)
     * [NI! We Demand an Iterator!](part4/chapter20/7-closing.md)
+  * [Ch 21. Iterators and Generators]()
+    * [Airspeed Velocity of an Unladen Iterator](part4/chapter21/0-opening.md)
+    * [The Iteration Protocol](part4/chapter21/1-iteration-protocol.md)
+    * [Consuming Iterables](part4/chapter21/2-consuming.md)
+    * [genfunc: Named Generators](part4/chapter21/3-genfunc.md)
+    * [genfn: Anonymous Generators](part4/chapter21/4-genfn.md)
+    * [Async Generators](part4/chapter21/5-async-generators.md)
+    * [When to Use Generators](part4/chapter21/6-when-generators.md)
+    * [done: false](part4/chapter21/7-closing.md)
 
 --------------------
 
