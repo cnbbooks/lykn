@@ -175,6 +175,15 @@
     * [Destructuring and Immutable Updates](part3/chapter15/5-with-immutable-updates.md)
     * [Edge Cases](part3/chapter15/6-edge-cases.md)
     * [Only a Destructuring](part3/chapter15/7-closing.md)
+  * [Ch 16. Modules]()
+    * [The Bridge of Death, Part Three](part3/chapter16/0-opening.md)
+    * [ES Modules in Lykn](part3/chapter16/1-esm.md)
+    * [import](part3/chapter16/2-import.md)
+    * [export](part3/chapter16/3-export.md)
+    * [dynamic-import](part3/chapter16/4-dynamic-import.md)
+    * [alias Across the Language](part3/chapter16/5-alias-everywhere.md)
+    * [Module Design](part3/chapter16/6-module-design.md)
+    * [Bridge Closed for Maintenance](part3/chapter16/7-closing.md)
 
 --------------------
 
