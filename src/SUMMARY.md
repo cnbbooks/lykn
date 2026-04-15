@@ -207,6 +207,15 @@
     * [Copying Objects](part4/chapter18/5-copying.md)
     * [Objects vs type](part4/chapter18/6-obj-vs-type.md)
     * [NI! We Demand an Array!](part4/chapter18/7-closing.md)
+  * [Ch 19. Arrays]()
+    * [The Holy Hand Grenade](part4/chapter19/0-opening.md)
+    * [Creating Arrays](part4/chapter19/1-creating.md)
+    * [Accessing Elements](part4/chapter19/2-accessing.md)
+    * [Functional Array Methods](part4/chapter19/3-functional-methods.md)
+    * [Mutating vs Non-Mutating](part4/chapter19/4-mutating-vs-non.md)
+    * [Iteration Patterns](part4/chapter19/5-iteration.md)
+    * [Array-Like Objects](part4/chapter19/6-array-like.md)
+    * [And There Was Much Rejoicing](part4/chapter19/7-closing.md)
 
 --------------------
 
