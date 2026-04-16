@@ -268,6 +268,15 @@
     * [JSON](part5/chapter25/2-json.md)
     * [Math](part5/chapter25/3-math.md)
     * [Approximately Correct](part5/chapter25/4-closing.md)
+  * [Ch 26. Proxy and Metaprogramming]()
+    * [It's Just a Model](part5/chapter26/0-opening.md)
+    * [What Is a Proxy?](part5/chapter26/1-what-is-proxy.md)
+    * [The Traps](part5/chapter26/2-traps.md)
+    * [Proxy Invariants](part5/chapter26/3-invariants.md)
+    * [Metaprogramming Patterns](part5/chapter26/4-patterns.md)
+    * [Proxy and Lykn's Surface Language](part5/chapter26/5-lykn-alternatives.md)
+    * [Revocable Proxies](part5/chapter26/6-revocable.md)
+    * [It Was a Proxy All Along](part5/chapter26/7-closing.md)
 
 --------------------
 
