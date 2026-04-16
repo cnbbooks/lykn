@@ -1,10 +1,14 @@
 ## Installing Lykn
 
-Lykn is a young language, and young languages have the charming habit of being installed by cloning a repository rather than downloading a polished binary. This will change. For now, the process is straightforward, involves no suffering whatsoever, and Cardinal Naggum is very disappointed about that.
-
 ### Prerequisites
 
-You need two things: **Rust** and **Git**. If you already have both, skip ahead. If not:
+You need two things: **Deno** and **Rust** (for the compiler).
+
+**Deno** is the JavaScript runtime Lykn uses for running compiled output, testing, and the development workflow:
+
+```sh
+brew install deno
+```
 
 **Rust** is the language the Lykn compiler is written in. Install it via rustup:
 
@@ -12,58 +16,51 @@ You need two things: **Rust** and **Git**. If you already have both, skip ahead.
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Verify with `cargo --version`. Any recent stable Rust will do.
-
-**Git** is Git. You almost certainly have it already. If `git --version` prints something, you're fine.
-
-You will also want **Deno** (or any JavaScript runtime) to *run* the compiled output, since the compiler produces JavaScript. But Deno is not required for compilation itself — that's pure Rust.
+### Installing the Compiler
 
 ```sh
-brew install deno
+cargo install lykn
 ```
 
-### Getting Lykn
+That's it. You now have the `lykn` binary on your path — a self-contained compiler with no runtime dependencies.
 
-Clone the repository and build the compiler:
+If you prefer to build from source:
 
 ```sh
 git clone https://github.com/oxur/lykn.git
 cd lykn
-cargo build --release
-cp ./target/release/lykn ./bin/
+cargo build --release && cp target/release/lykn bin/
 ```
 
-That's it. You now have a self-contained `lykn` binary that compiles `.lykn` files to JavaScript with no runtime dependencies.
-
-### Verifying the Installation
-
-Compile and run the surface syntax example that ships with the project:
+### Your First Project
 
 ```sh
-lykn compile examples/surface/main.lykn -o /tmp/main.js
-deno run /tmp/main.js
+lykn new my-app
+cd my-app
 ```
 
-You should see output like:
+`lykn new` scaffolds a workspace with a standard project structure, a `project.json` for tasks, and a starter module.
 
-```text
-hello, world, lykn!
-S-expression syntax for JavaScript
+### Verifying
+
+```sh
+lykn run packages/my-app/mod.lykn
 ```
 
-If you do, the compiler is working. If you don't, check that `./bin/lykn` is on your path (or use `./bin/lykn compile ...` explicitly).
+If you see output, the compiler is working.
 
 ### The Full Toolkit
-
-The `lykn` binary does more than compile:
 
 ```sh
 lykn compile main.lykn                    # compile to stdout
 lykn compile main.lykn -o main.js         # compile to file
-lykn compile main.lykn --strip-assertions # omit type checks / contracts
+lykn compile main.lykn --strip-assertions # production mode
+lykn run main.lykn                        # compile + run
+lykn test                                 # run project tests
+lykn check main.lykn                      # syntax check
 lykn fmt main.lykn                        # format to stdout
 lykn fmt -w main.lykn                     # format in place
-lykn check main.lykn                      # syntax check
+lykn new project-name                     # scaffold a project
 ```
 
-One binary, no runtime dependencies, no configuration files. The Inquisition, one suspects, would have preferred something more complicated.
+One binary for compilation, formatting, checking, running, testing, and project creation. The Inquisition, one suspects, would have preferred something more complicated.

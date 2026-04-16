@@ -1,37 +1,54 @@
 ## The Lykn Development Workflow
 
-The complete pipeline, end to end:
+The `lykn` CLI handles the entire development lifecycle:
 
 ```text
-.lykn source → lykn compile → .js output → deno lint → deno fmt → deno test → deno run
+lykn new → lykn run → lykn test → lykn compile → lykn lint → lykn publish
 ```
 
-### Compile
+### Create
 
 ```sh
-lykn compile src/app.lykn              # single file to stdout
-lykn compile src/app.lykn -o dist/app.js  # single file to file
-lykn compile --strip-assertions src/   # production mode
-lykn check src/app.lykn               # syntax check without output
-lykn fmt src/app.lykn                  # format lykn source
+lykn new my-app
+cd my-app
 ```
 
-### Lint and Format
+Scaffolds a workspace with standard project structure, `project.json`, and a starter module.
+
+### Develop
 
 ```sh
-deno lint dist/                       # lint compiled output
-deno fmt dist/                        # format compiled output
-deno lint src/ && deno test test/     # check + test in one step
+lykn run packages/my-app/mod.lykn    # compile + run
+lykn check packages/my-app/mod.lykn  # syntax check
+lykn fmt -w packages/my-app/         # format in place
 ```
 
-### Test and Run
+### Test
 
 ```sh
-deno test test/                       # run test suite
-deno run --allow-net dist/app.js      # execute with permissions
-deno task build                       # project scripts from deno.json
+lykn test                            # run all tests
 ```
 
-### Three Tools
+Delegates to Deno's test runner under the hood.
 
-`lykn` compiles and formats `.lykn` source. `deno` lints, formats, tests, and runs the compiled JavaScript. No npm. No `package.json`. No `node_modules`. Two binaries do everything.
+### Build for Production
+
+```sh
+lykn compile packages/my-app/mod.lykn --strip-assertions -o dist/app.js
+```
+
+### Lint
+
+```sh
+lykn lint                            # lint compiled output via Deno
+```
+
+### Publish
+
+```sh
+lykn publish                         # publish package(s)
+```
+
+### One Tool
+
+The `lykn` binary is the single entry point. It delegates to Deno for running, testing, and linting, but the developer doesn't need to know the underlying commands. One binary, one workflow.

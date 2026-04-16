@@ -1,37 +1,30 @@
 ## Putting Together a Project
 
-A complete Lykn project structure:
+`lykn new` generates a workspace with this structure:
 
 ```text
-my-project/
-  deno.json          ← tasks, import maps, lint/fmt config
-  src/
-    app.lykn         ← lykn source
-    utils.lykn
-  dist/              ← compiled JS output (gitignored)
-    app.js
-    utils.js
-  test/
-    app.test.js      ← Deno tests (in JS, on compiled output)
+my-app/
+  project.json              ← tasks, import maps, workspace config
+  packages/
+    my-app/
+      mod.lykn           ← main module
+      mod_test.lykn      ← tests (or .js)
   README.md
 ```
 
-### `deno.json`
+### Workspaces
 
-```json
-{
-  "tasks": {
-    "compile": "lykn compile src/ --out-dir dist/",
-    "test": "deno test test/",
-    "check": "lykn check src/ && deno lint dist/",
-    "dev": "lykn compile src/ --out-dir dist/ && deno run --allow-all dist/app.js",
-    "build": "lykn compile --strip-assertions src/ --out-dir dist/ && deno fmt dist/"
-  }
-}
-```
+Lykn projects use workspaces by default — each package lives under `packages/`. This scales from a single module to a multi-package monorepo without restructuring.
 
 ### The Workflow
 
-`deno task compile` to build. `deno task test` to verify. `deno task build` for production. Three commands, one config file, zero `node_modules`.
+```sh
+lykn new my-app           # create
+cd my-app
+lykn run packages/my-app/mod.lykn   # develop
+lykn test                 # verify
+lykn compile --strip-assertions packages/my-app/mod.lykn -o dist/app.js  # build
+lykn publish              # ship
+```
 
-The developer who has been reading since Chapter 1 now has everything: a language, a compiler, a linter, a test runner, and a deployment path. Write `.lykn`, compile to `.js`, lint with Deno, test with Deno, run anywhere JavaScript runs.
+Five commands, one config file, zero `node_modules`. The developer who has been reading since Chapter 1 now has everything: a language, a compiler, a project scaffold, and a deployment path. Write `.lykn`, run with `lykn run`, test with `lykn test`, compile for production.

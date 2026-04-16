@@ -19,8 +19,8 @@ The Lykn toolchain uses Deno exclusively. The reasons align with Lykn's own desi
 The Lykn developer's commands:
 
 ```sh
-lykn compile src/app.lykn -o dist/app.js   # compile
-deno run --allow-net dist/app.js            # run
-deno test test/                              # test
-deno task build                              # project tasks
+lykn run packages/my-app/mod.lykn     # compile + run
+lykn test                              # run project tests
+lykn compile src/app.lykn -o app.js    # compile to file
+deno run --allow-net app.js            # run compiled JS directly
 ```

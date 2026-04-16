@@ -22,7 +22,7 @@ Deno's formatter is opinionated — consistent indentation, semicolons, quote st
 
 ### Lykn-Specific Considerations
 
-**The `== null` exception**: Lykn's `some->` and compiler-generated null checks use `== null` (loose equality). Deno's `no-explicit-any` and equality rules may flag these. Configure exceptions in `deno.json` if needed:
+**The `== null` exception**: Lykn's `some->` and compiler-generated null checks use `== null` (loose equality). Deno's `no-explicit-any` and equality rules may flag these. Configure exceptions in `project.json` if needed:
 
 ```json
 {

@@ -1,26 +1,64 @@
 ## The `lykn` CLI
 
-The compiler binary:
+The full command reference:
 
-```sh
-# Compile
-lykn compile src/app.lykn              # to stdout
-lykn compile src/app.lykn -o dist/app.js  # to file
-lykn compile --strip-assertions src/   # production mode
-lykn compile --kernel-json src/app.lykn   # debug: kernel JSON output
+```text
+lykn language toolchain
 
-# Check
-lykn check src/app.lykn               # syntax validation, no output
-
-# Format
-lykn fmt src/app.lykn                  # format to stdout
-lykn fmt -w src/app.lykn              # format in place
+Commands:
+  new      Create a new lykn project
+  run      Run a .lykn or .js file
+  test     Run tests via Deno
+  compile  Compile .lykn to JavaScript
+  check    Check .lykn syntax
+  fmt      Format .lykn files
+  lint     Lint compiled JS via Deno
+  publish  Publish package(s)
+  help     Print help for a command
 ```
 
-### `--strip-assertions`
+### `lykn new`
 
-Removes type checks, contracts (`:pre`/`:post`), `bind` type checks (DD-24), and constructor validation from the output. Multi-clause dispatch checks are NOT stripped — they're runtime semantics. Development builds catch type errors; production builds run clean.
+Scaffolds a new project with workspace structure, `project.json`, and starter files:
 
-### Exit Codes
+```sh
+lykn new my-app
+```
 
-`0` on success, `1` on compile error. Error messages include source location (file, line, column) and the failing expression. The reader has seen these errors throughout the book — every "COMPILE ERROR" example comes from the same error reporting system.
+### `lykn run`
+
+Compiles and executes in one step:
+
+```sh
+lykn run packages/my-app/mod.lykn
+```
+
+### `lykn test`
+
+Runs the project's test suite via Deno:
+
+```sh
+lykn test
+```
+
+### `lykn compile`
+
+Produces JavaScript output:
+
+```sh
+lykn compile main.lykn                    # to stdout
+lykn compile main.lykn -o main.js         # to file
+lykn compile main.lykn --strip-assertions # production mode
+lykn compile main.lykn --kernel-json      # debug: kernel JSON
+```
+
+**`--strip-assertions`** removes type checks, contracts, `bind` type checks, and constructor validation. Multi-clause dispatch checks are NOT stripped — they're runtime semantics.
+
+### `lykn check` / `lykn fmt` / `lykn lint`
+
+```sh
+lykn check main.lykn        # syntax validation
+lykn fmt main.lykn           # format to stdout
+lykn fmt -w main.lykn        # format in place
+lykn lint                    # lint compiled JS via Deno
+```
