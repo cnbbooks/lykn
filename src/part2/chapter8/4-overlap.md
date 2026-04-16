@@ -40,6 +40,30 @@ When clause order determines behaviour, *reordering clauses changes semantics*. 
 
 Lykn makes clause order irrelevant by requiring non-overlapping types. If no two clauses can match the same input, the order doesn't matter. Refactoring is safe. The developer's intent is unambiguous.
 
+### Destructured Parameters and Dispatch
+
+Destructured object parameters (Ch 15) have dispatch type `:object`. Destructured array parameters have dispatch type `:array`. Two clauses that both destructure objects at the same position overlap — because dispatch checks `typeof`, not the shape of the object's properties:
+
+```lisp
+;; COMPILE ERROR: both clauses accept objects at position 0
+(func bad
+  (:args ((object :string name))
+   :body name)
+  (:args ((object :number id))
+   :body id))
+```
+
+But a destructured object vs a simple `:string` does not overlap — different dispatch types:
+
+```lisp
+;; OK: :object vs :string at position 0
+(func process
+  (:args ((object :string name :string email) :string action)
+   :body (template name " — " action))
+  (:args (:string raw :string action)
+   :body (template raw " — " action)))
+```
+
 ### The Algorithm
 
 Overlap detection uses Maranget's algorithm (DD-21) — the same framework used for `match` exhaustiveness checking in Chapter 10. It's a well-studied algorithm from the pattern matching literature, applied here to function clause signatures instead of match arms.
