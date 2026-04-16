@@ -321,6 +321,15 @@
     * [astring](part7/chapter30/5-astring.md)
     * [The Kernel Form Vocabulary](part7/chapter30/6-form-vocabulary.md)
     * [The Second Lesson](part7/chapter30/7-closing.md)
+  * [Ch 31. How Lykn Works — The Surface Compiler]()
+    * [And Now for Something Completely Analytical](part7/chapter31/0-opening.md)
+    * [Architecture: Six Modules](part7/chapter31/1-architecture.md)
+    * [The Classifier](part7/chapter31/2-classifier.md)
+    * [Macro Expansion](part7/chapter31/3-macros.md)
+    * [The Three Compilation Phases](part7/chapter31/4-three-phases.md)
+    * [Maranget's Algorithm](part7/chapter31/5-maranget.md)
+    * [The Parallel JS Surface Compiler](part7/chapter31/6-parallel-compiler.md)
+    * [Both Compilers Have Been Seen](part7/chapter31/7-closing.md)
 
 --------------------
 
