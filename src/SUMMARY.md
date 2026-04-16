@@ -360,6 +360,17 @@
     * [Testing](part8/chapter34/6-testing.md)
     * [Putting It All Together](part8/chapter34/7-together.md)
     * [A Grail-Shaped Object](part8/chapter34/8-closing.md)
+  * [Ch 35. Project — An HTTP Server in Lykn]()
+    * [Have at You, Port 8080!](part8/chapter35/0-opening.md)
+    * [The Project: shortn](part8/chapter35/1-the-project.md)
+    * [The Data Model](part8/chapter35/2-data-model.md)
+    * [Storage with Deno KV](part8/chapter35/3-storage.md)
+    * [Short Code Generation](part8/chapter35/4-codes.md)
+    * [The Route Handlers](part8/chapter35/5-routes.md)
+    * [The Server and Routing](part8/chapter35/6-server.md)
+    * [Testing](part8/chapter35/7-testing.md)
+    * [Production Notes](part8/chapter35/8-production.md)
+    * [Tis But a Server](part8/chapter35/9-closing.md)
 
 --------------------
 
