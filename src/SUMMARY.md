@@ -349,6 +349,20 @@
 
 --------------------
 
+* [Part VIII — Projects](part8/README.md)
+  * [Ch 34. Project — A CLI Tool in Lykn]()
+    * [The Quest Begins](part8/chapter34/0-opening.md)
+    * [The Project: mdify](part8/chapter34/1-the-project.md)
+    * [The IR](part8/chapter34/2-the-ir.md)
+    * [The Parser](part8/chapter34/3-parser.md)
+    * [The Renderer](part8/chapter34/4-renderer.md)
+    * [The CLI Entry Point](part8/chapter34/5-cli.md)
+    * [Testing](part8/chapter34/6-testing.md)
+    * [Putting It All Together](part8/chapter34/7-together.md)
+    * [A Grail-Shaped Object](part8/chapter34/8-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
