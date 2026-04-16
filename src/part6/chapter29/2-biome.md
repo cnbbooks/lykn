@@ -1,51 +1,41 @@
-## Biome: Linting and Formatting
+## Deno: Linting and Formatting
 
-Biome is Lykn's recommended linter and formatter. It's a single Rust binary that handles both — no plugins, no configuration cascade, fast.
+Deno includes a linter (`deno lint`) and a formatter (`deno fmt`) built in. No external tools needed, no configuration files, no plugins to install.
 
-### Why Biome
+### Linting
 
-- **Fast** — written in Rust, orders of magnitude faster than ESLint on large codebases
-- **Single binary** — `brew install biome`, no npm
-- **Lint + format in one pass** — `biome check` does both
-- **Opinionated formatter** — Prettier-compatible with minimal config
-- **Recommended rules** — sane defaults that rarely need customization
+```sh
+deno lint dist/              # lint compiled JS output
+deno lint src/               # lint JS source (if any)
+```
 
-### Configuration
+Deno's linter uses recommended rules by default. It catches common JavaScript issues — unused variables, implicit type coercion, unreachable code.
 
-A typical Lykn project's `biome.json`:
+### Formatting
+
+```sh
+deno fmt dist/               # format compiled output
+deno fmt --check dist/       # check without modifying (CI mode)
+```
+
+Deno's formatter is opinionated — consistent indentation, semicolons, quote style. Like Prettier, but built in.
+
+### Lykn-Specific Considerations
+
+**The `== null` exception**: Lykn's `some->` and compiler-generated null checks use `== null` (loose equality). Deno's `no-explicit-any` and equality rules may flag these. Configure exceptions in `deno.json` if needed:
 
 ```json
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": { "enabled": true },
-  "linter": {
-    "enabled": true,
-    "rules": { "recommended": true }
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
   }
 }
 ```
 
-Recommended rules, space indentation, organize imports. That's the whole config.
+**Generated code patterns**: The compiled JS is generated output. Some lint rules may flag patterns from `match` IIFEs or gensym variable names. These are correct code — suppress or exclude generated directories as needed.
 
-### Lykn-Specific Considerations
+### Why Not a Separate Linter?
 
-**The `== null` exception**: Lykn's `some->` and compiler-generated null checks use `== null` (loose equality). Biome's `noDoubleEquals` rule flags these. Suppress with an inline comment or configure an exception for generated files.
-
-**Generated code patterns**: The compiled JS is generated output. Some lint rules may flag patterns from `match` IIFEs or gensym variable names. Use Biome's ignore patterns for generated directories if needed.
-
-**camelCase output**: Biome's naming convention rules (if enabled) should pass — Lykn already outputs camelCase.
-
-### Commands
-
-```sh
-biome check dist/              # lint + format + organize imports
-biome check --write dist/      # auto-fix what can be fixed
-biome lint dist/               # lint only
-biome format --write dist/     # format in place
-biome ci dist/                 # CI mode (fail on any issue)
-```
+Deno's built-in tools align with Lykn's philosophy: fewer tools, fewer config files, fewer things that can go wrong. The lykn project itself uses `deno lint` — no Biome, no ESLint, no external dependencies. One runtime does it all.

@@ -6,7 +6,7 @@ A developer steps forward and opens their `.eslintrc.json`. It's 200 lines long.
 
 Into the Gorge.
 
-The next developer says: "Biome. Recommended rules. Default config."
+The next developer says: "Deno. Built-in linter, built-in formatter. Zero config."
 
 The Bridgekeeper has no follow-up questions. The developer crosses.
 

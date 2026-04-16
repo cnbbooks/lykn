@@ -1,6 +1,6 @@
 ## The Bridge Is Crossed
 
-The Bridgekeeper retires. The bridge is crossed. The developer has `lykn compile`, `biome check`, `deno test`, and `deno run`. Four tools, four commands, zero configuration drama.
+The Bridgekeeper retires. The bridge is crossed. The developer has `lykn compile`, `deno lint`, `deno test`, and `deno run`. Three tools — or really two, since Deno does everything but compile. Zero configuration drama.
 
 "That was the easiest bridge yet."
 

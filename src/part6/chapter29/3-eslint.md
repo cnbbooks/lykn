@@ -1,13 +1,13 @@
-## ESLint: When You Need It
+## ESLint and Biome: When You Need Them
 
-Biome is the default. ESLint is the alternative — for projects that need custom rules, framework-specific plugins, or integration with existing ESLint infrastructure.
+Deno's built-in tools are the default. ESLint and Biome are alternatives for projects with specific needs.
 
-### When ESLint over Biome
+### When to Reach for External Linters
 
-- Project already has extensive ESLint configuration
-- Need framework-specific plugins (React, Vue, Angular)
-- Need custom rules Biome doesn't support
+- Project needs framework-specific plugins (React, Vue, Angular)
 - Organizational standards require ESLint
+- Need custom lint rules Deno doesn't support
+- Want Biome's speed on very large codebases
 
 ### ESLint for Lykn Output
 
@@ -25,8 +25,12 @@ export default [
 ];
 ```
 
-The `"smart"` option for `eqeqeq` allows `== null` comparisons while enforcing `===` everywhere else — exactly what Lykn's output needs.
+The `"smart"` option for `eqeqeq` allows `== null` while enforcing `===` everywhere else.
 
-### The ESTree Connection
+### Biome
 
-ESLint parses JavaScript into an ESTree AST — the same format Lykn's JS compiler produces. The analysis operates on the same data structure that Lykn emits. This means ESLint's rules apply naturally to Lykn output without special handling.
+A single Rust binary that lints and formats in one pass. Install with `brew install biome`. Fast, minimal config, Prettier-compatible formatting. A solid choice if you need a standalone tool outside Deno's ecosystem.
+
+### The Recommendation
+
+Start with `deno lint` and `deno fmt`. They're already installed, already configured, and already what the lykn project uses. Reach for ESLint or Biome when you have a specific reason to.

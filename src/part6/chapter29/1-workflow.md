@@ -3,7 +3,7 @@
 The complete pipeline, end to end:
 
 ```text
-.lykn source → lykn compile → .js output → biome check → deno test → deno run
+.lykn source → lykn compile → .js output → deno lint → deno fmt → deno test → deno run
 ```
 
 ### Compile
@@ -19,9 +19,9 @@ lykn fmt src/app.lykn                  # format lykn source
 ### Lint and Format
 
 ```sh
-biome check dist/                     # lint + format + organize imports
-biome check --write dist/             # auto-fix
-biome ci dist/                        # CI mode (fail on any issue)
+deno lint dist/                       # lint compiled output
+deno fmt dist/                        # format compiled output
+deno lint src/ && deno test test/     # check + test in one step
 ```
 
 ### Test and Run
@@ -32,6 +32,6 @@ deno run --allow-net dist/app.js      # execute with permissions
 deno task build                       # project scripts from deno.json
 ```
 
-### The Four Tools
+### Three Tools
 
-`lykn` compiles. `biome` lints and formats the output. `deno test` verifies. `deno run` executes. No npm. No `package.json`. No `node_modules`. Each tool is a single binary.
+`lykn` compiles and formats `.lykn` source. `deno` lints, formats, tests, and runs the compiled JavaScript. No npm. No `package.json`. No `node_modules`. Two binaries do everything.
