@@ -300,6 +300,14 @@
     * [Streams](part6/chapter28/5-streams.md)
     * [Environment and Configuration](part6/chapter28/6-environment.md)
     * [A Strong Draw](part6/chapter28/7-closing.md)
+  * [Ch 29. Tooling — Linting, Formatting, and Runtimes]()
+    * [The Bridgekeeper's Final Question](part6/chapter29/0-opening.md)
+    * [The Lykn Development Workflow](part6/chapter29/1-workflow.md)
+    * [Biome](part6/chapter29/2-biome.md)
+    * [ESLint: When You Need It](part6/chapter29/3-eslint.md)
+    * [The lykn CLI](part6/chapter29/4-lykn-cli.md)
+    * [Putting Together a Project](part6/chapter29/5-project-structure.md)
+    * [The Bridge Is Crossed](part6/chapter29/6-closing.md)
 
 --------------------
 
