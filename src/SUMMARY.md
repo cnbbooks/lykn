@@ -384,6 +384,10 @@
 
 --------------------
 
+[Lambda: The Ultimate GOTO](conclusion.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
