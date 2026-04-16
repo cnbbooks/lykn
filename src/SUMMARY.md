@@ -251,6 +251,20 @@
 
 --------------------
 
+* [Part V — The Deep Cuts](part5/README.md)
+  * [Ch 24. Regular Expressions]()
+    * [We Use... REGEXP!](part5/chapter24/0-opening.md)
+    * [Regex in Lykn](part5/chapter24/1-regex-in-lykn.md)
+    * [Pattern Syntax](part5/chapter24/2-pattern-syntax.md)
+    * [Flags](part5/chapter24/3-flags.md)
+    * [Using Regex: Methods](part5/chapter24/4-methods.md)
+    * [Capture Groups](part5/chapter24/5-groups.md)
+    * [Lookaround](part5/chapter24/6-lookaround.md)
+    * [Common Patterns](part5/chapter24/7-common-patterns.md)
+    * [Stop That](part5/chapter24/8-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
