@@ -330,6 +330,14 @@
     * [Maranget's Algorithm](part7/chapter31/5-maranget.md)
     * [The Parallel JS Surface Compiler](part7/chapter31/6-parallel-compiler.md)
     * [Both Compilers Have Been Seen](part7/chapter31/7-closing.md)
+  * [Ch 32. The Browser Shim]()
+    * [And Now for Something Completely Parenthetical](part7/chapter32/0-opening.md)
+    * [How the Shim Works](part7/chapter32/1-how-it-works.md)
+    * [Bundle Size](part7/chapter32/2-bundle.md)
+    * [Error Handling](part7/chapter32/3-errors.md)
+    * [Heritage](part7/chapter32/4-heritage.md)
+    * [Development vs Production](part7/chapter32/5-dev-vs-prod.md)
+    * [Something Completely Parenthetical](part7/chapter32/6-closing.md)
 
 --------------------
 
