@@ -241,6 +241,13 @@
     * [WeakMap and WeakSet](part4/chapter22/3-weak-collections.md)
     * [Collections in Functional Lykn](part4/chapter22/4-functional-style.md)
     * [NI! We Demand a Symbol!](part4/chapter22/5-closing.md)
+  * [Ch 23. Symbols]()
+    * ['Tis a Silly Place](part4/chapter23/0-opening.md)
+    * [What Symbols Are](part4/chapter23/1-what-symbols-are.md)
+    * [Well-Known Symbols](part4/chapter23/2-well-known.md)
+    * [The Global Registry](part4/chapter23/3-global-registry.md)
+    * [Symbols and Lykn Keywords](part4/chapter23/4-symbols-vs-keywords.md)
+    * [Nothing Further](part4/chapter23/5-closing.md)
 
 --------------------
 
