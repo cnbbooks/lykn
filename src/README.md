@@ -1,6 +1,6 @@
 [![][cover]][cover-large]
 
-<!-- Named page links below: /-->
+[//]: ---Named-Links---
 
 [cover]: images/cover.png
 [cover-large]: images/cover-large.png
