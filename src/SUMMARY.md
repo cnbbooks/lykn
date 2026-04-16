@@ -338,6 +338,14 @@
     * [Heritage](part7/chapter32/4-heritage.md)
     * [Development vs Production](part7/chapter32/5-dev-vs-prod.md)
     * [Something Completely Parenthetical](part7/chapter32/6-closing.md)
+  * [Ch 33. Building a Programming Language]()
+    * [What Have the Romans Ever Done for Us?](part7/chapter33/0-opening.md)
+    * [Why Build a Language?](part7/chapter33/1-why-build.md)
+    * [The Design Decisions That Matter](part7/chapter33/2-design-decisions.md)
+    * [What Lykn Learned](part7/chapter33/3-heritage.md)
+    * [Lessons from Building](part7/chapter33/4-lessons.md)
+    * [The Road Ahead](part7/chapter33/5-road-ahead.md)
+    * [Apart from All That](part7/chapter33/6-closing.md)
 
 --------------------
 
