@@ -48,4 +48,6 @@ The simplest useful proxy — forward everything, log access:
 
 ### Membrane Pattern
 
-Wraps an entire object graph — any object returned from the proxy is also wrapped. Used for sandboxing and security boundaries. This is a library-level pattern; the concept cards have the implementation details.
+Wraps an entire object graph — any object returned from the proxy is also wrapped, recursively. The `get` trap checks whether the returned value is an object and, if so, wraps it in another proxy with the same handler. This ensures that traversing `proxy:nested:deep` passes through interception at every level.
+
+Used for sandboxing and security boundaries — the caller can access the entire object graph but every operation is mediated. Mark Miller's [research on object capabilities](https://research.google/pubs/pub40673/) provides the theoretical foundation; the TC39 [Realms proposal](https://github.com/tc39/proposal-shadowrealm) builds on similar ideas for isolation between code contexts.

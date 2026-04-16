@@ -25,4 +25,4 @@ This is why `Promise:resolve():then(...)` runs before `(set-timeout ... 0)` — 
 
 `await` pauses the *function*, not the *thread*. The event loop keeps processing other events while your function waits. When the awaited promise settles, the function's continuation is added to the microtask queue and resumes at the next opportunity.
 
-The concept cards have the full event loop model for readers who want the deep dive. For working code, the practical knowledge is: `await` doesn't block, microtasks run before macrotasks, and JavaScript handles concurrent I/O without threads by never waiting for anything.
+*Exploring JavaScript* and [MDN's event loop documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop) have the full model for readers who want the deep dive. For working code, the practical knowledge is: `await` doesn't block, microtasks run before macrotasks, and JavaScript handles concurrent I/O without threads by never waiting for anything.

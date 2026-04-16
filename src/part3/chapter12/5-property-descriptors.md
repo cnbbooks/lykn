@@ -30,4 +30,4 @@ Properties you create with normal code — `(obj :name "x")`, `bind`, assignment
 
 ### Assignment vs Definition
 
-Assignment (`(= obj:name value)`) goes through the prototype chain and calls setters. Definition (`Object:define-property`) creates or modifies the property directly on the object, bypassing setters. The distinction rarely matters in daily code, but it explains why some patterns behave unexpectedly. The Deep-JS concept cards cover this in full detail.
+Assignment (`(= obj:name value)`) goes through the prototype chain and calls setters. Definition (`Object:define-property`) creates or modifies the property directly on the object, bypassing setters. The distinction rarely matters in daily code, but it explains why some patterns behave unexpectedly. *Deep JavaScript* covers the full semantics of assignment vs definition.

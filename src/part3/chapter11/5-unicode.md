@@ -30,4 +30,4 @@ If you need character counts, use `Array:from` to split by code points: `(Array:
 
 For grapheme-accurate text processing — correctly counting what humans think of as "characters," handling combined emoji, zero-width joiners, and regional indicators — use `Intl:Segmenter`. It's a built-in API, available in all modern runtimes, and it's the only reliable way to segment text by visual characters.
 
-These three facts cover the survival knowledge. The concept cards provide the full Unicode deep dive for readers who need it.
+These three facts cover the survival knowledge. *Exploring JavaScript* and the [MDN Unicode guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#utf-16_characters_unicode_code_points_and_grapheme_clusters) provide the full deep dive for readers who need it.

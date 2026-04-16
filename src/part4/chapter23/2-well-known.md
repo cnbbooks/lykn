@@ -37,4 +37,4 @@ Controls which constructor is used when built-in methods create derived objects 
 
 Well-known symbols are JavaScript's protocol mechanism — the language equivalent of "if you implement this method, the runtime will call it in this context." They're how JavaScript achieves extensibility without modifying built-in prototypes.
 
-The concept cards have the full list. For working Lykn code, `Symbol:iterator` is the one that matters most.
+The [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#well-known_symbols) have the full list. For working Lykn code, `Symbol:iterator` is the one that matters most.
