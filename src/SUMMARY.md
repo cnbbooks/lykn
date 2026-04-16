@@ -262,6 +262,12 @@
     * [Lookaround](part5/chapter24/6-lookaround.md)
     * [Common Patterns](part5/chapter24/7-common-patterns.md)
     * [Stop That](part5/chapter24/8-closing.md)
+  * [Ch 25. Dates, JSON, and Math]()
+    * [The Instructions](part5/chapter25/0-opening.md)
+    * [Dates](part5/chapter25/1-dates.md)
+    * [JSON](part5/chapter25/2-json.md)
+    * [Math](part5/chapter25/3-math.md)
+    * [Approximately Correct](part5/chapter25/4-closing.md)
 
 --------------------
 
