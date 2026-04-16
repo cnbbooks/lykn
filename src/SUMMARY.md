@@ -311,6 +311,19 @@
 
 --------------------
 
+* [Part VII — The Lykn Compiler](part7/README.md)
+  * [Ch 30. How Lykn Works — The Kernel]()
+    * [How Not To Be Seen](part7/chapter30/0-opening.md)
+    * [The Pipeline](part7/chapter30/1-pipeline.md)
+    * [The Reader](part7/chapter30/2-reader.md)
+    * [The Compiler](part7/chapter30/3-compiler.md)
+    * [ESTree](part7/chapter30/4-estree.md)
+    * [astring](part7/chapter30/5-astring.md)
+    * [The Kernel Form Vocabulary](part7/chapter30/6-form-vocabulary.md)
+    * [The Second Lesson](part7/chapter30/7-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
