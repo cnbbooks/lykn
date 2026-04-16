@@ -234,6 +234,13 @@
     * [Async Generators](part4/chapter21/5-async-generators.md)
     * [When to Use Generators](part4/chapter21/6-when-generators.md)
     * [done: false](part4/chapter21/7-closing.md)
+  * [Ch 22. Collections — Map, Set, WeakMap, WeakSet]()
+    * [Bring Me a MAP!](part4/chapter22/0-opening.md)
+    * [Map](part4/chapter22/1-map.md)
+    * [Set](part4/chapter22/2-set.md)
+    * [WeakMap and WeakSet](part4/chapter22/3-weak-collections.md)
+    * [Collections in Functional Lykn](part4/chapter22/4-functional-style.md)
+    * [NI! We Demand a Symbol!](part4/chapter22/5-closing.md)
 
 --------------------
 
