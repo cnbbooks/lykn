@@ -371,6 +371,16 @@
     * [Testing](part8/chapter35/7-testing.md)
     * [Production Notes](part8/chapter35/8-production.md)
     * [Tis But a Server](part8/chapter35/9-closing.md)
+  * [Ch 36. Project — A Browser App in Lykn]()
+    * [Deploy to the BROWSER!](part8/chapter36/0-opening.md)
+    * [The Project: shortn-ui](part8/chapter36/1-the-project.md)
+    * [State Management](part8/chapter36/2-state.md)
+    * [The API Client](part8/chapter36/3-api.md)
+    * [Rendering](part8/chapter36/4-render.md)
+    * [Wiring It Up](part8/chapter36/5-wiring.md)
+    * [Building for Deployment](part8/chapter36/6-deploy.md)
+    * [The Trilogy, Complete](part8/chapter36/7-trilogy.md)
+    * [Fade to Black](part8/chapter36/8-closing.md)
 
 --------------------
 
