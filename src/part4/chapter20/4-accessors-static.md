@@ -9,7 +9,7 @@
   (field -radius 0)
 
   (constructor (r)
-    (= this:-radius r))
+    (assign this:-radius r))
 
   (get area ()
     (return (* Math:PI this:-radius this:-radius)))
@@ -17,7 +17,7 @@
   (set radius (r)
     (if (< r 0)
       (throw (new Error "Radius cannot be negative")))
-    (= this:-radius r)))
+    (assign this:-radius r)))
 ```
 
 `circle:area` looks like a property access but runs a computation. `(= circle:radius 10)` looks like assignment but runs validation.

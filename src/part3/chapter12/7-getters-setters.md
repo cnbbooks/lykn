@@ -5,8 +5,8 @@ Accessor properties look like data but run code when accessed or assigned.
 ```lisp
 (class Rectangle ()
   (constructor (width height)
-    (= this:width width)
-    (= this:height height))
+    (assign this:width width)
+    (assign this:height height))
 
   (get area ()
     (return (* this:width this:height))))

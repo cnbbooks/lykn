@@ -23,7 +23,7 @@ The callback is an `fn` — it receives `req` and `res` as explicit arguments. N
 (bind count (cell 0))
 
 (func update-display
-  :body (= el:text-content (template (express count))))
+  :body (set! el:text-content (template (express count))))
 
 (el:add-event-listener "click" (fn (:any event)
   (swap! count (fn (:number n) (+ n 1)))

@@ -6,11 +6,11 @@ The same problem, two solutions.
 
 ```lisp
 (class Circle ()
-  (constructor (r) (= this:r r))
+  (constructor (r) (assign this:r r))
   (area () (return (* Math:PI this:r this:r))))
 
 (class Rect ()
-  (constructor (w h) (= this:w w) (= this:h h))
+  (constructor (w h) (assign this:w w) (assign this:h h))
   (area () (return (* this:w this:h))))
 
 (bind shapes #a((new Circle 5) (new Rect 3 4)))

@@ -9,7 +9,7 @@ Inside a `class` body (which uses kernel syntax), `this` accesses instance prope
 ```lisp
 (class Dog ()
   (constructor (name)
-    (= this:name name))
+    (assign this:name name))
 
   (speak ()
     (console:log (template this:name " barks"))))

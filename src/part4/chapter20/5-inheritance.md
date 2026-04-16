@@ -3,14 +3,14 @@
 ```lisp
 (class Animal ()
   (constructor (name)
-    (= this:name name))
+    (assign this:name name))
   (speak ()
     (return (template this:name " makes a sound"))))
 
 (class Dog (Animal)
   (constructor (name breed)
     (super name)
-    (= this:breed breed))
+    (assign this:breed breed))
   (speak ()
     (return (template this:name " barks"))))
 

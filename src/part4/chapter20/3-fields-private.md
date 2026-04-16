@@ -30,7 +30,7 @@ Lykn uses a naming convention that the compiler enforces at the JS engine level.
   (field -balance 0)
 
   (constructor (initial)
-    (= this:-balance initial))
+    (assign this:-balance initial))
 
   (deposit (amount)
     (+= this:-balance amount))

@@ -6,7 +6,7 @@ The kernel `class` form (DD-07):
 (class Dog (Animal)
   (constructor (name breed)
     (super name)
-    (= this:breed breed))
+    (assign this:breed breed))
 
   (speak ()
     (return (template this:name " barks")))

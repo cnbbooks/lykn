@@ -22,8 +22,8 @@ The developer reluctantly writes:
 ```lisp
 (class Dog ()
   (constructor (name breed)
-    (= this:name name)
-    (= this:breed breed))
+    (assign this:name name)
+    (assign this:breed breed))
   (speak ()
     (return (template this:name " barks"))))
 ```

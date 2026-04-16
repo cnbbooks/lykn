@@ -7,7 +7,7 @@ Surface Lykn is a superset of kernel Lykn. Any kernel form works in surface code
 ```lisp
 (class Counter ()
   (constructor ()
-    (= this:count 0))
+    (assign this:count 0))
 
   (increment ()
     (+= this:count 1)
