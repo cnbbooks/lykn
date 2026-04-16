@@ -280,6 +280,20 @@
 
 --------------------
 
+* [Part VI — The Wider World](part6/README.md)
+  * [Ch 27. The Browser and the DOM]()
+    * [Run Away! Run Away!](part6/chapter27/0-opening.md)
+    * [Running Lykn in the Browser](part6/chapter27/1-running-in-browser.md)
+    * [DOM Selection and Traversal](part6/chapter27/2-dom-selection.md)
+    * [Creating and Modifying Elements](part6/chapter27/3-creating-modifying.md)
+    * [Events](part6/chapter27/4-events.md)
+    * [The Fetch API](part6/chapter27/5-fetch.md)
+    * [Storage](part6/chapter27/6-storage.md)
+    * [A Minimal Browser App](part6/chapter27/7-minimal-app.md)
+    * [The DOM Didn't Bite](part6/chapter27/8-closing.md)
+
+--------------------
+
 [Feedback](feedback.md)
 
 --------------------
