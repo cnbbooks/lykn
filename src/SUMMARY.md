@@ -291,6 +291,15 @@
     * [Storage](part6/chapter27/6-storage.md)
     * [A Minimal Browser App](part6/chapter27/7-minimal-app.md)
     * [The DOM Didn't Bite](part6/chapter27/8-closing.md)
+  * [Ch 28. Server-Side JavaScript]()
+    * [We'll Call It a Draw](part6/chapter28/0-opening.md)
+    * [Why Deno?](part6/chapter28/1-why-deno.md)
+    * [The Event-Driven Model](part6/chapter28/2-event-driven.md)
+    * [File System Access](part6/chapter28/3-file-system.md)
+    * [HTTP Servers](part6/chapter28/4-http-servers.md)
+    * [Streams](part6/chapter28/5-streams.md)
+    * [Environment and Configuration](part6/chapter28/6-environment.md)
+    * [A Strong Draw](part6/chapter28/7-closing.md)
 
 --------------------
 
