@@ -1,4 +1,8 @@
-# LYKN
+# Lykn
+
+## And Now for Something Completely Parenthetical
+
+### A Lisp Flavoured JavaScript
 
 <br/>
 <br/>
