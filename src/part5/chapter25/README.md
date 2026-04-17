@@ -4,5 +4,5 @@
 
 [//]: ---Named-Links---
 
-[cover]: ../images/ch25.png
-[cover-large]: ../images/ch25-large.png
+[cover]: ../../images/ch25.png
+[cover-large]: ../../images/ch25.png

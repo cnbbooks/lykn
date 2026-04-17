@@ -404,7 +404,7 @@
 
 [Lambda: The Ultimate GOTO](conclusion.md)
 
---------------------
+[Lichen for Dessert](dessert.md)
 
 [Feedback](feedback.md)
 
