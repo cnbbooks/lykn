@@ -319,6 +319,13 @@
     * [Putting Together a Project](part6/chapter30/5-project-structure.md)
     * [The Bridge Is Crossed](part6/chapter30/6-closing.md)
   * [Ch 31. CI/CD and Project Workflows](part6/chapter31/README.md)
+    * [The Knights Who Say Ni! — The Final Demand](part6/chapter31/0-opening.md)
+    * [The Complete Pipeline](part6/chapter31/1-pipeline.md)
+    * [Task Composition with deno.json](part6/chapter31/2-tasks.md)
+    * [GitHub Actions](part6/chapter31/3-github-actions.md)
+    * [Documentation Verification in CI](part6/chapter31/4-docs-ci.md)
+    * [Deployment Patterns](part6/chapter31/5-deployment.md)
+    * [NI! — Satisfied, At Last](part6/chapter31/6-closing.md)
 
 --------------------
 
