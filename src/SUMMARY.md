@@ -7,7 +7,6 @@
 
 [Dedication](preface/dedication.md)
 [Preface](preface/README.md)
-[Forward](preface/forward.md)
 [Acknowledgments](preface/acknowledgments.md)
 
 --------------------
