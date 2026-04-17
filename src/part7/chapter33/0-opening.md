@@ -1,25 +1,17 @@
-## What Have the Romans Ever Done for Us?
+## And Now for Something Completely Analytical
 
-"What has JavaScript ever done for us?"
+"You've met the kernel compiler. It reads and dispatches."
 
-"The browser platform."
+"Who are you?"
 
-"Well, obviously the browser platform. But apart from—"
+"I do everything else."
 
-"npm. The largest package registry in programming."
+"Such as?"
 
-"Well, yes, obviously npm. But—"
+"Type checking. Contract verification. Exhaustiveness analysis. Macro expansion. Scope tracking. Unused binding detection. Destructuring pattern validation. Multi-clause overlap detection."
 
-"JSON. The universal data format."
+"How long have you been doing this?"
 
-"All right, fine—"
+"Since Chapter 4."
 
-"Async/await. The event loop. V8's optimizing compiler. Universal deployment — every device with a screen runs it. Template literals. Destructuring. ESTree as a standard AST format."
-
-A long silence.
-
-"All right. But apart from the browser, npm, JSON, async/await, the event loop, V8, universal deployment, template literals, destructuring, and ESTree — what has JavaScript ever done for us?"
-
-"Closures. From Scheme."
-
-"Oh, shut up."
+The reader realizes: every safety guarantee in the book — every type check that fired, every exhaustiveness error that caught a missing variant, every contract that blamed the caller — was this compiler's work. The kernel compiler produces JavaScript. The surface compiler makes sure the JavaScript is *correct*.

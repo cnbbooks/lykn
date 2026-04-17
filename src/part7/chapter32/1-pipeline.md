@@ -24,6 +24,6 @@ The ESTree AST becomes JavaScript text. astring — a vendored library — prett
 
 ### What's NOT in the Pipeline
 
-No optimizer. No type system (that's the surface compiler — Ch 31). No intermediate representation beyond ESTree. No runtime library. The pipeline is deliberately minimal: read, compile, print.
+No optimizer. No type system (that's the surface compiler — Ch 33). No intermediate representation beyond ESTree. No runtime library. The pipeline is deliberately minimal: read, compile, print.
 
 Note: the Rust compiler (the primary `lykn compile` tool) has a richer pipeline — reader → expander → classifier → analyzer → emitter → codegen (Ch 2). This chapter describes the *JS kernel compiler*, which powers the browser bundle and serves as the reference implementation.

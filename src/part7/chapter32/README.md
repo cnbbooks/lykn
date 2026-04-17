@@ -1,4 +1,4 @@
-# Chapter 32: The Browser Shim
+# Chapter 32: How Lykn Works — The Kernel
 
 [![][cover]][cover-large]
 

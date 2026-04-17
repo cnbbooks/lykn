@@ -1,4 +1,4 @@
-# Chapter 30: How Lykn Works — The Kernel
+# Chapter 30: Tooling — Linting, Formatting, and Runtimes
 
 [![][cover]][cover-large]
 

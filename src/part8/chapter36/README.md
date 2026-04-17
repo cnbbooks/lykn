@@ -1,4 +1,4 @@
-# Chapter 36: Project — A Browser App in Lykn
+# Chapter 36: Project — A CLI Tool in Lykn
 
 [![][cover]][cover-large]
 

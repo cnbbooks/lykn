@@ -1,4 +1,4 @@
-# Chapter 35: Project — An HTTP Server in Lykn
+# Chapter 35: Building a Programming Language
 
 [![][cover]][cover-large]
 

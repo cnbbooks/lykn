@@ -8,7 +8,7 @@ A URL shortener API. It accepts long URLs, generates short codes, stores the map
 - **`GET /:code`** — redirects (302) to the original URL
 - **`GET /api/list`** — returns JSON array of all entries
 - **`GET /api/stats/:code`** — returns click count and creation time
-- **`OPTIONS`** — CORS preflight (for the browser app in Ch 36)
+- **`OPTIONS`** — CORS preflight (for the browser app in Ch 38)
 
 ### Usage
 

@@ -1,11 +1,9 @@
-## Deploy to the BROWSER!
+## The Quest Begins
 
-The knights have built a CLI (Ch 34) and a server (Ch 35). The Black Knight, satisfied but never content, demands the final conquest.
+The knights set out from Camelot. Their mission: build a CLI tool in Lykn that converts Markdown to HTML.
 
-"We shall deploy... to the BROWSER!"
+"What does a grail look like?"
 
-"But the server is already running."
+"Like a command-line utility, apparently."
 
-"Aye — and we shall build a page that TALKS to it!"
-
-The knights open `index.html`. The terminal sits beside the editor. The `shortn` server hums on port 8080. The final project begins.
+They open their editor. The terminal awaits. Thirty-three chapters of preparation ride with them.

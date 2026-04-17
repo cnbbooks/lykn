@@ -2,9 +2,9 @@
 
 The reader has now built:
 
-1. **A CLI tool** (Ch 34) — `mdify`, a Markdown-to-HTML converter
-2. **An HTTP server** (Ch 35) — `shortn`, a URL shortener API
-3. **A browser app** (Ch 36) — `shortn-ui`, a web interface
+1. **A CLI tool** (Ch 36) — `mdify`, a Markdown-to-HTML converter
+2. **An HTTP server** (Ch 37) — `shortn`, a URL shortener API
+3. **A browser app** (Ch 38) — `shortn-ui`, a web interface
 
 Three projects. Three platforms. One language.
 

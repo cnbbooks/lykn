@@ -34,4 +34,4 @@ Transform the analyzed surface AST into kernel forms.
 - `cell` → `{ value: x }`, threading macros → nested calls or IIFEs
 - `--strip-assertions` → type checks and contracts removed
 
-The emitter produces kernel forms that feed into the JS kernel compiler (Ch 30) or the Rust codegen. The full pipeline from surface source to JavaScript is complete.
+The emitter produces kernel forms that feed into the JS kernel compiler (Ch 32) or the Rust codegen. The full pipeline from surface source to JavaScript is complete.

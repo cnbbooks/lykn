@@ -12,4 +12,4 @@ A Clojure-like Lisp that compiles to JavaScript. Its browser shim uses `<script 
 
 ### Lykn's Contribution
 
-Lykn's shim follows the same pattern but bundles a surface compiler with type checking and exhaustiveness analysis. The compile errors are richer — source locations, typed parameter hints, exhaustiveness warnings — because the surface compiler (Ch 31) runs in the browser too.
+Lykn's shim follows the same pattern but bundles a surface compiler with type checking and exhaustiveness analysis. The compile errors are richer — source locations, typed parameter hints, exhaustiveness warnings — because the surface compiler (Ch 33) runs in the browser too.

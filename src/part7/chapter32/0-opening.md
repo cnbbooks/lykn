@@ -1,15 +1,15 @@
-## And Now for Something Completely Parenthetical
+## How Not To Be Seen
 
-A web page loads. A `<script type="text/lykn">` tag contains s-expressions. The browser has never seen this content type. But a shim script loaded earlier recognizes it, compiles it to JavaScript, and executes the result.
+"And now for something completely different: How Not To Be Seen."
 
-The page updates.
+"In this picture there is a kernel compiler. It has been compiling Lykn code since Chapter 1. Can you see it?"
 
-"Did a Lisp just run in the browser?"
+No. You cannot. The reader has been using it for twenty-nine chapters without once needing to think about it. It reads s-expressions, produces JavaScript, and disappears. No runtime artifacts. No evidence it was ever there.
 
-"It compiled to JavaScript first."
+"Mr. Kernel Compiler, would you stand up please?"
 
-"In the *browser*?"
+The compiler stands up. It's a reader (320 lines), a dispatch table (1,671 lines), and a vendored pretty-printer. That's it. No explosion. No dramatic reveal. Just a small, clean pipeline that has been doing its job invisibly since the first `(bind greeting "Hello, World!")`.
 
-"In the browser."
+"That's the whole thing?"
 
-The parentheses have arrived. The book's title — thirty-two chapters in the making — is justified.
+"That's the whole thing."
