@@ -5,11 +5,15 @@
 ```text
 my-app/
   project.json              ← tasks, import maps, workspace config
+  README.md
+  LICENSE                    ← Apache-2.0
   packages/
     my-app/
-      mod.lykn           ← main module
-      mod_test.lykn      ← tests (or .js)
-  README.md
+      deno.json             ← package config (name, version, lykn.kind)
+      mod.lykn              ← main module
+  test/
+    mod_test.lykn            ← starter test (using @lykn/testing DSL)
+  .gitignore
 ```
 
 ### Workspaces

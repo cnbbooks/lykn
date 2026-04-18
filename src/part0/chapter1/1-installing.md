@@ -39,7 +39,7 @@ lykn new my-app
 cd my-app
 ```
 
-`lykn new` scaffolds a workspace with a standard project structure, a `project.json` for tasks, and a starter module.
+`lykn new` scaffolds a workspace with `project.json`, a starter module, a test file using the `@lykn/testing` DSL, and `README.md` + `LICENSE` for publishing.
 
 ### Verifying
 
