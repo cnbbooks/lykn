@@ -1,27 +1,35 @@
 ## The Constitutional Peasants
 
-Dennis is toiling in the mud when a developer rides up on a horse made of compiled JavaScript.
+Carol is toiling in the bits when a developer rides up on a horse made of compiled JavaScript.
 
-"I am Arthur, King of the Functions! I bring three function forms: declarations, expressions, and arrows!"
+"I am Bob, King of the Functions! I bring three function forms: declarations, expressions, and arrows!"
 
-Dennis does not look up from his lambda calculus. "Well I didn't vote for you."
+Carol does not look up from her lambda calculus. "Well I didn't vote for for them."
 
 "You don't *vote* for function forms."
 
-"Well how'd you become three function forms then?"
+"Well how'd they become three function forms then?"
 
-"The ECMAScript committee, their specification writ in the purest shimmering prose of twenty-six years of backward compatibility, raised the `function` keyword aloft from the bosom of the grammar, signifying by divine providence that I, Arthur, was to carry three forms—"
+"The ECMAScript committee, their specification writ in the purest shimmering prose of twenty-six years of backward compatibility, raised the `function` keyword aloft from the bosom of the grammar, signifying by divine providence that I, Bob, was to carry three forms—"
 
-"Listen. Strange committees sitting in Ecma offices distributing keywords is no basis for a system of abstraction. Supreme computational power derives from a mandate from the lambda calculus, not from some farcical standardization ceremony."
+"Listen. Strange committees sitting in ECMA offices distributing keywords is no basis for a system of abstraction. Supreme computational power derives from a mandate from the lambda calculus, not from some farcical standardization ceremony."
 
 "Be quiet!"
 
 "You can't expect to wield supreme expressive power just because some Swiss standards body threw a keyword at you!"
 
-A passing Lykn developer clears her throat. "We have two forms. `func` for named functions. `fn` for anonymous ones. Both require typed parameters. Neither has `this`."
+A passing Lykn developer clears her throat. "We have two forms."
 
-Dennis considers this. "Well, it's better than what *he's* got. But I still didn't vote for it."
+"'lo, Alice."
 
-"You don't vote for programming languages, Dennis."
+"Be *quiet!*"
 
-"Well you *should*."
+"'lo, Carol."
+
+"We've got `func` for named functions. `fn` for anonymous ones."
+
+"I ORDER YOU to *BE QUIET!*"
+
+"Order, eh? Who does he think he is? As I was *saying*, both require typed parameters. Neither has `this`."
+
+Carol considers this. "Well, it's better than what *he's* got."

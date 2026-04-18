@@ -1,8 +1,8 @@
-## The Knights Who Say Ni
+## The Knights Who Say ... _What?_
 
 A developer approaches a clearing in the forest. Three tall figures in horned helmets block the path.
 
-"We are the Knights Who Say Ni! And we demand... a precondition!"
+"We are the Knights Who Say NaN! And we demand... a _precondition!_"
 
 The developer, who has been writing functions without contracts for years, shifts uncomfortably.
 
@@ -10,16 +10,14 @@ The developer, who has been writing functions without contracts for years, shift
 
 "A precondition! One that asserts the amount is positive. And we demand it be a single expression, composed with `and` and `or` as needed. No vectors! We are very particular about our syntax."
 
-The developer adds `:pre (> amount 0)`.
+The developer asks "What about `:pre (> amount 0)`?"
 
-"Now — we demand a postcondition!"
+"Now — we demand a _postcondition!_"
 
-The developer adds `:post (>= (get ~ :balance) 0)`.
+The developer shifts nervously from foot to foot, eventually summoning enough courage to venture a muttered "So ... `:post (>= (get ~ :balance) 0)`?"
 
 "Now — we demand another clause! With different arities! And non-overlapping types!"
 
-The developer adds a second clause. The Knights inspect it. They run the overlap checker. No conflicts are found.
+The developer, starting to get the hang of this, adds another clause. The Knights inspect it. They run the overlap checker. No conflicts are found.
 
 "That," says the head Knight, peering at the function through the visor of Maranget's algorithm, "is a nice function. We will accept it."
-
-The developer passes through the clearing, contracts intact. Behind her, the Knights return to their posts, ready to demand preconditions from the next developer who dares to write a function without specifying what it promises.

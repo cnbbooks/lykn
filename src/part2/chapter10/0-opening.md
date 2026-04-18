@@ -1,6 +1,6 @@
 ## The Bridge of Death, Part Two
 
-The Bridgekeeper is still at his post. The Gorge of Eternal `undefined` yawns beneath. But the questions have changed.
+The Bridgekeeper is still at his post. The Gorge of Eternal `undefined` yawns beneath. A new day. New travellers.
 
 "Stop! Who would cross the Bridge of Death must answer me these questions three."
 
@@ -28,6 +28,4 @@ A second developer approaches. She is carrying parentheses.
 
 The Bridgekeeper consults his scroll. He has no further questions. The developer crosses.
 
-From below, distantly: "What do you *mean*, compile error? I had a perfectly good `if (user)` check—"
-
-The Gorge does not respond. The Gorge has heard this before.
+The next traveller: "What does she *mean*, compile error? I had a perfectly good `if (user)` check—AAARGH!!"

@@ -1,4 +1,4 @@
-## The Cheese Shop
+## The Emporium
 
 A developer walks into the National Property Access Emporium.
 
@@ -22,8 +22,10 @@ A developer walks into the National Property Access Emporium.
 
 "We don't stock that, sir. Never much call for it around here."
 
-The developer looks at the menu. Two items: `obj:prop` for static access, `(get obj key)` for dynamic access. Both are in stock. Both work. Neither requires a seventeen-page specification document to understand.
+"But it's the single-most popular usage in the WORLD!"
+
+"Sorry, sir."
+
+Astonished, the developer looks at the menu. Two items: `obj:prop` for static access, `(get obj key)` for dynamic access. Both are in stock. Both work. Neither requires a seventeen-page specification document to understand.
 
 "That's... actually all I need," the developer says, with the slightly dazed expression of someone who has visited a property access establishment and actually found what they were looking for.
-
-"Thank you, sir. The Cheese Shop aims to please."

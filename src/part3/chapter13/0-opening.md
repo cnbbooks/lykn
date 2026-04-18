@@ -1,32 +1,30 @@
 ## Dennis Returns
 
-Dennis is back, and he's been mutated.
+Carol yells, "Come and see the violence inherent in the system!" She holds up a JavaScript variable. It's been reassigned from three different modules. A callback has closed over it and incremented it in a `setInterval`. Something in the event loop has set it to `NaN`.
 
-"Come and see the violence inherent in the system!" He holds up a JavaScript variable. It's been reassigned from three different modules. A callback has closed over it and incremented it in a `setInterval`. Something in the event loop has set it to `NaN`.
+"Help! Help! It's being mutated!"
 
-"Help! Help! I'm being mutated!"
-
-A Lykn developer walks over and shows him a `cell`.
+Alice lumbers over and shows her a `cell`.
 
 ```lisp
 (bind counter (cell 0))
 (swap! counter (fn (:number n) (+ n 1)))
 ```
 
-Dennis stares at it. The `!` in `swap!` catches his eye.
+Carol stares at it, mesmerised ... the `!` in `swap!` ensnaring her.
 
-"It says `!`," he says. "It's *announcing* that it mutates."
+"It *announces* its mutation with a bang!"
 
-"Yes."
+"Oh, that's lovely ..."
 
 "And you can only update it through a function."
 
-"Yes."
+"You what?"
 
 "And the binding itself is `const` — you can't replace the whole cell."
 
-"Yes."
+"But ..."
 
-Dennis considers this for a long moment.
+Carol considers this for a long moment.
 
-"That's... actually rather civilized," he says. He goes back to his mud, occasionally calling `(swap! mud-pile add-mud)`.
+"That's ... actually rather civilized," she says, returning to her bit-farming.
