@@ -1,51 +1,114 @@
-# Sample workflow for building and deploying a mdBook site to GitHub Pages
-#
-# To get started with mdBook see: https://rust-lang.github.io/mdBook/index.html
-#
+# Build and deploy the mdBook site to GitHub Pages, plus attach EPUB to
+# a rolling "latest" release whenever main builds cleanly, and proper
+# versioned releases on v* tags.
+
 name: Publish book content to GH Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    tags: ["v*"]
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write       # needed to create/update releases
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: cargo-bins/cargo-binstall@main
-      - name: Install mdBook
-        run: cargo binstall mdbook
-      - name: Install mermaid for mdBook
-        run: cargo binstall mdbook-mermaid
+
+      - name: Install mdBook toolchain
+        run: |
+          cargo binstall --no-confirm mdbook
+          cargo binstall --no-confirm mdbook-mermaid
+          cargo binstall --no-confirm mdbook-epub
+
+      # Python is pre-installed on ubuntu-latest runners; this step is
+      # here to pin a specific version and make the dependency explicit.
+      - name: Set up Python (for EPUB preprocessor)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch fonts
+        run: |
+          chmod +x scripts/fetch-fonts.sh
+          ./scripts/fetch-fonts.sh
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
+
       - name: Build with mdBook
         run: mdbook build
-      - name: Upload artifact
+
+      - name: Rename EPUB for release
+        run: |
+          # mdbook-epub names the file based on the book title.
+          EPUB_SRC="book/epub/Lykn.epub"
+          if [[ ! -f "$EPUB_SRC" ]]; then
+            echo "::error::Expected $EPUB_SRC does not exist. EPUB build may have failed silently."
+            ls -la book/epub/ || true
+            exit 1
+          fi
+          cp "$EPUB_SRC" book/epub/lykn-latest.epub
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            cp "$EPUB_SRC" "book/epub/lykn-${VERSION}.epub"
+          fi
+
+      - name: Sanity-check EPUB contents
+        run: |
+          echo "=== Fonts packaged ==="
+          unzip -l book/epub/Lykn.epub | grep -iE '\.ttf$' | wc -l
+          echo "=== Stylesheet packaged ==="
+          unzip -l book/epub/Lykn.epub | grep -i epub.css
+          echo "=== Chapter image count ==="
+          unzip -l book/epub/Lykn.epub | grep -cE 'ch[0-9]+\.png'
+
+      - name: Upload HTML artifact for Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./book
+          path: ./book/html
 
-  # Deployment job
+      - name: Upload EPUB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: epub
+          path: book/epub/*.epub
+          retention-days: 30
+
+      # Rolling "latest" release from main — always reflects the current build.
+      - name: Update rolling latest release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Build
+          body: |
+            Automatically updated EPUB from the latest `main` commit.
+            For a stable version, see tagged releases.
+          files: book/epub/lykn-latest.epub
+          prerelease: true
+
+      # Proper versioned release when a v* tag is pushed.
+      - name: Publish tagged release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: book/epub/lykn-*.epub
+          generate_release_notes: true
+
   deploy:
     environment:
       name: github-pages
