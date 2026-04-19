@@ -72,7 +72,7 @@ jobs:
           echo "=== Fonts packaged ==="
           unzip -l book/epub/Lykn.epub | grep -iE '\.ttf$' | wc -l
           echo "=== Stylesheet packaged ==="
-          unzip -l book/epub/Lykn.epub | grep -i epub.css
+          unzip -l book/epub/Lykn.epub | grep -i stylesheet.css
           echo "=== Chapter image count ==="
           unzip -l book/epub/Lykn.epub | grep -cE 'ch[0-9]+\.png'
 
