@@ -14,6 +14,18 @@ build-dir = "book"
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+# EPUB-only preprocessor: rewrites relative image paths so they resolve
+# correctly under mdbook-epub. mdbook-epub v0.5.2 joins paths as
+# 'root + src + path' rather than relative to the containing markdown file,
+# so '../../images/foo.png' fails. This preprocessor runs only for EPUB
+# builds (via `renderers = ["epub"]`) and normalizes paths to be src-rooted.
+# Source files stay pristine; HTML build is untouched.
+#
+# When mdbook-epub fixes this upstream, remove these two lines.
+[preprocessor.epub-image-paths]
+command = "./scripts/mdbook-epub-image-paths.py"
+renderers = ["epub"]
+
 [output.html]
 no-section-label = true
 default-theme = "lfe-pdp"
@@ -34,6 +46,16 @@ heading-split-level = 2
 [output.html.fold]
 enable = true
 
+# ============================================================================
+# EPUB output
+# ============================================================================
+#
+# Install: cargo install mdbook-epub
+# Build:   mdbook build  (produces book/epub/Lykn.epub)
+#
+# Font files must exist at theme/fonts/ before building. See scripts/fetch-fonts.sh
+# for a one-shot downloader that pulls them from Google Fonts' open-source repo.
+
 [output.epub]
 epub-version = 3
 use-default-css = false       # we ship our own, matched to the lfe-pdp theme
@@ -42,9 +64,8 @@ no-section-label = true       # match HTML behaviour
 cover-image = "src/images/cover.png"
 additional-css = ["css/epub.css"]
 
-# Fonts and any book-wide assets that aren't referenced from markdown.
-# Chapter images (src/images/ch*.png etc.) are picked up automatically because
-# they're linked from markdown; these entries are only for files that need to
+# Fonts. Chapter images (src/images/ch*.png etc.) are picked up automatically
+# from markdown references; these entries are only for files that need to
 # be in the EPUB package but aren't referenced from any chapter.
 additional-resources = [
   "theme/fonts/RedHatDisplay-VariableFont_wght.ttf",
@@ -56,5 +77,3 @@ additional-resources = [
   "theme/fonts/IBMPlexMono-SemiBold.ttf",
   "theme/fonts/IBMPlexMono-Italic.ttf",
 ]
-
-[output.pdf]

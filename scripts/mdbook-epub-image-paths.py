@@ -201,10 +201,18 @@ def run_supports_check(renderer: str) -> int:
     """
     mdbook asks 'supports <renderer>?' to decide whether to invoke us.
     We support only epub — HTML and other renderers don't need this fix
-    (and running it on HTML would actively break things if paths were
-    already src-relative in some places).
+    (and running it on HTML would actively break things by rewriting paths
+    that the HTML renderer depends on being file-relative).
     """
-    return 0 if renderer == 'epub' else 1
+    supported = renderer == 'epub'
+    # Log to stderr — mdbook prints preprocessor stderr to the user's
+    # terminal, so this shows up in the build output without interfering
+    # with the JSON protocol on stdout.
+    print(
+        f'epub-image-paths: supports({renderer!r}) -> {supported}',
+        file=sys.stderr,
+    )
+    return 0 if supported else 1
 
 
 def main() -> int:
@@ -212,6 +220,7 @@ def main() -> int:
     if len(argv) == 2 and argv[0] == 'supports':
         return run_supports_check(argv[1])
     if not argv:
+        print('epub-image-paths: running preprocessor pass', file=sys.stderr)
         return run_preprocessor()
 
     print(f'epub-image-paths: unexpected arguments: {argv}', file=sys.stderr)
