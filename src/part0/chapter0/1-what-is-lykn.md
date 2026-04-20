@@ -48,7 +48,7 @@ The **Lykn Kernel** is the lower layer: approximately thirty forms that map one-
 
 ### Surface Layer
 
-The **Lykn Surface** is what you encouraged to use. It sits on top of the kernel and provides the things JavaScript was too polite to insist upon: immutable bindings via `bind` (which compiles to `const` and does not have a mutable cousin), typed functions via `func` (with contracts, pattern-based dispatch, and the aforementioned type checks), algebraic data types via `type`, exhaustive pattern matching via `match`, controlled mutation via `cell` containers, and threading macros that let you write data transformation pipelines without nesting your code to the point where it begins to resemble a geological formation.
+The **Lykn Surface** is what you are encouraged to use. It sits on top of the kernel and provides the things JavaScript was too polite to insist upon: immutable bindings via `bind` (which compiles to `const` and does not have a mutable cousin), typed functions via `func` (with contracts, pattern-based dispatch, and the aforementioned type checks), algebraic data types via `type`, exhaustive pattern matching via `match`, controlled mutation via `cell` containers, and threading macros that let you write data transformation pipelines without nesting your code to the point where it begins to resemble a geological formation.
 
 ### All Together, Now
 

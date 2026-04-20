@@ -14,7 +14,15 @@ But incoherence is not the same as incompetence. JavaScript's semantics — the 
 
 ### Issues
 
-The problems that remain are real, but they are concentrated. Empirical research tells a consistent story. Hanam et al.'s BugAID tool, mining 105,133 commits from 134 Node.js projects, found that *dereferenced non-values* — the `undefined is not a function` family — constitute the single largest bug pattern. Pradel and Sen's dynamic analysis of 138.9 million runtime events found that 98.85% of JavaScript's implicit type coercions are harmless, but the remaining 1.15% cluster into five specific patterns that account for a disproportionate share of real bugs: non-strict equality between different types, string concatenation with `undefined`, arithmetic on non-numbers, incomparable relational comparisons, and wrapped primitives in conditionals. Gao et al. demonstrated that type systems — both Flow and TypeScript — catch exactly 15% of real JavaScript bugs. The other 85% resist type-level detection entirely.
+The problems that remain are real, but they are concentrated. Empirical research tells a consistent story. Hanam et al.'s BugAID tool, mining 105,133 commits from 134 Node.js projects, found that *dereferenced non-values* — the `undefined is not a function` family — constitute the single largest bug pattern. Pradel and Sen's dynamic analysis of 138.9 million runtime events found that 98.85% of JavaScript's implicit type coercions are harmless, but the remaining 1.15% cluster into five specific patterns that account for a disproportionate share of real bugs:
+
+1. non-strict equality between different types
+2. string concatenation with `undefined`
+3. arithmetic on non-numbers
+4. incomparable relational comparisons, and
+5. wrapped primitives in conditionals.
+
+Gao et al. demonstrated that type systems — both Flow and TypeScript — catch exactly 15% of real JavaScript bugs. The other 85% resist type-level detection entirely.
 
 ### And So
 
