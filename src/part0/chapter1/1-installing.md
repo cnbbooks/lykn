@@ -19,7 +19,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### Installing the Compiler
 
 ```sh
-cargo install lykn
+cargo install lykn-cli
 ```
 
 That's it. You now have the `lykn` binary on your path — a self-contained compiler with no runtime dependencies.
