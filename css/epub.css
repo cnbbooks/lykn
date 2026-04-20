@@ -22,16 +22,21 @@
 
 /* Red Hat Display — headings.
    Variable font: weight 100–900 on a single file. Fallback readers that
-   don't understand variable axes pick the default instance. */
+   don't understand variable axes pick the default instance.
+
+   NB: mdbook-epub preserves the source directory structure for
+   additional-resources, so fonts end up at OEBPS/theme/fonts/ rather
+   than OEBPS/. The URLs here are relative to stylesheet.css (also at
+   OEBPS/), hence the `theme/fonts/` prefix. */
 @font-face {
   font-family: "Red Hat Display";
-  src: url("RedHatDisplay-VariableFont_wght.ttf") format("truetype-variations");
+  src: url("theme/fonts/RedHatDisplay-Variable.ttf") format("truetype-variations");
   font-weight: 100 900;
   font-style: normal;
 }
 @font-face {
   font-family: "Red Hat Display";
-  src: url("RedHatDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  src: url("theme/fonts/RedHatDisplay-Italic-Variable.ttf") format("truetype-variations");
   font-weight: 100 900;
   font-style: italic;
 }
@@ -40,13 +45,13 @@
    the regular weight, modern readers get proper optical sizing. */
 @font-face {
   font-family: "Literata";
-  src: url("Literata-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  src: url("theme/fonts/Literata-Variable.ttf") format("truetype-variations");
   font-weight: 200 900;
   font-style: normal;
 }
 @font-face {
   font-family: "Literata";
-  src: url("Literata-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  src: url("theme/fonts/Literata-Italic-Variable.ttf") format("truetype-variations");
   font-weight: 200 900;
   font-style: italic;
 }
@@ -54,25 +59,25 @@
 /* IBM Plex Mono — code. Static files (no variable version published). */
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("IBMPlexMono-Regular.ttf") format("truetype");
+  src: url("theme/fonts/IBMPlexMono-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("IBMPlexMono-Italic.ttf") format("truetype");
+  src: url("theme/fonts/IBMPlexMono-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("IBMPlexMono-Medium.ttf") format("truetype");
+  src: url("theme/fonts/IBMPlexMono-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("IBMPlexMono-SemiBold.ttf") format("truetype");
+  src: url("theme/fonts/IBMPlexMono-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }

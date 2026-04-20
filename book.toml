@@ -68,12 +68,13 @@ additional-css = ["css/epub.css"]
 # from markdown references; these entries are only for files that need to
 # be in the EPUB package but aren't referenced from any chapter.
 additional-resources = [
-  "theme/fonts/RedHatDisplay-VariableFont_wght.ttf",
-  "theme/fonts/RedHatDisplay-Italic-VariableFont_wght.ttf",
-  "theme/fonts/Literata-VariableFont_opsz,wght.ttf",
-  "theme/fonts/Literata-Italic-VariableFont_opsz,wght.ttf",
+  "theme/fonts/RedHatDisplay-Variable.ttf",
+  "theme/fonts/RedHatDisplay-Italic-Variable.ttf",
+  "theme/fonts/Literata-Variable.ttf",
+  "theme/fonts/Literata-Italic-Variable.ttf",
   "theme/fonts/IBMPlexMono-Regular.ttf",
   "theme/fonts/IBMPlexMono-Medium.ttf",
   "theme/fonts/IBMPlexMono-SemiBold.ttf",
   "theme/fonts/IBMPlexMono-Italic.ttf",
 ]
+

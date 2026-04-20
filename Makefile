@@ -4,6 +4,7 @@ DOWNLOAD = https://github.com/rust-lang/mdBook/releases
 PUBLISH_DIR = book
 PUBLISH_CONTENT = $(PUBLISH_DIR)
 PORT = 5099
+CALIBRE := $(HOME)/Applications/Media/calibre.app/Contents/MacOS/ebook-convert
 
 default: build
 
@@ -15,7 +16,9 @@ Download $(BIN) from $(DOWNLOAD).
 
 endef
 
-build: clean-all
+build: clean-all build-mdbook build-calibre
+
+build-mdbook:
 ifndef GEN
 	$(error $(BINARY_ERROR))
 endif
@@ -25,6 +28,27 @@ endif
 serve:
 	@echo ">> Preparing to run mdbook server ..."
 	@$(GEN) serve -p $(PORT) -d $(PUBLISH_CONTENT)
+
+$(PUBLISH_DIR)/pdf:
+	@echo ">> Creating PDF output directory at $(PUBLISH_DIR)/pdf ..."
+	@mkdir -p $(PUBLISH_DIR)/pdf
+
+build-calibre: $(PUBLISH_DIR)/pdf
+ifndef CALIBRE
+	@echo ">> Calibre not found at $(CALIBRE). Skipping ebook generation."
+else
+	@echo ">> Building PDF with Calibre..."
+	@$(CALIBRE) $(PUBLISH_DIR)/epub/Lykn.epub $(PUBLISH_DIR)/pdf/Lykn.pdf \
+		--pdf-page-numbers \
+		--preserve-cover-aspect-ratio \
+		--pdf-default-font-size 11 \
+		--pdf-mono-font-size 10 \
+		--paper-size letter \
+		--margin-top 54 --margin-bottom 54 \
+		--margin-left 54 --margin-right 54 \
+		--disable-remove-fake-margins
+	@echo ">> PDF generated at $(PUBLISH_DIR)/book.epub
+endif
 
 run: serve
 
