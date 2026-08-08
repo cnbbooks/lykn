@@ -1,0 +1,101 @@
+;; fences.lykn — extract fenced code blocks from a Markdown document.
+;;
+;; The first module of the book-audit tool. Pure string work, no I/O, so it is
+;; the piece that can be unit-tested hardest and the piece every other module
+;; depends on.
+;;
+;; A "block" is one fenced region: its info-string tag (`lisp`, `javascript`,
+;; `lykn,compile-fail`, or empty), the 1-based line the fence opened on, and the
+;; body between the fences.
+;;
+;; NOTE (CDC, unverified): written from docs/guides + assets/ai/SKILL.md without
+;; a toolchain in this environment. Nothing here has been through `lykn check`
+;; or `lykn compile`. Treat every form as a claim to be verified, and see
+;; `friction-log.md` for the places the guides did not answer the question.
+
+(type Block
+  (Block :string tag :number line :string body))
+
+(type Scan
+  (Scan :array blocks :any tag :number start :array buffer))
+
+;; The fence delimiter. Bound rather than inlined so the escaping only has to be
+;; right once.
+(bind fence "```")
+
+(func fence-line?
+  :args (:string line)
+  :returns :boolean
+  :body (-> line (:trim-start) (:starts-with fence)))
+
+;; The info string is whatever follows the opening delimiter: "lisp",
+;; "lykn,compile-fail", or "" for a bare fence.
+(func fence-tag
+  :args (:string line)
+  :returns :string
+  :body (-> line (:trim-start) (:slice fence:length) (:trim)))
+
+(func empty-scan
+  :returns (Scan)
+  :body (Scan #a() nil 0 #a()))
+
+;; Close the open block and append it, unless the body is blank — a fence with
+;; nothing in it teaches nothing and would only add noise to the audit.
+(func close-block
+  :args ((Scan s))
+  :returns (Scan)
+  :body
+  (bind body (-> s:buffer (:join "\n")))
+  (? (= (-> body (:trim)) "")
+    (Scan s:blocks nil 0 #a())
+    (Scan (conj s:blocks (Block s:tag s:start body)) nil 0 #a())))
+
+(func open-block
+  :args ((Scan s) :string line :number index)
+  :returns (Scan)
+  :body (Scan s:blocks (fence-tag line) (+ index 1) #a()))
+
+(func append-line
+  :args ((Scan s) :string line)
+  :returns (Scan)
+  :body (Scan s:blocks s:tag s:start (conj s:buffer line)))
+
+;; One line of the scan. Outside a block a fence opens one; inside a block a
+;; fence closes it and every other line accumulates.
+(func step
+  :args ((Scan s) :string line :number index)
+  :returns (Scan)
+  :body
+  (bind inside (not (js:eq s:tag null)))
+  (? inside
+    (? (fence-line? line) (close-block s) (append-line s line))
+    (? (fence-line? line) (open-block s line index) s)))
+
+;; An unterminated final block is kept rather than dropped: a truncated fence is
+;; itself a defect worth reporting, and silently discarding it would hide one.
+(export (func extract-blocks
+  :args (:string source)
+  :returns :array
+  :body
+  (bind lines (-> source (:split "\n")))
+  (bind scanned
+    (-> lines
+      (:reduce
+        (fn ((Scan acc) :string line :number index) (step acc line index))
+        (empty-scan))))
+  (bind final (? (js:eq scanned:tag null) scanned (close-block scanned)))
+  final:blocks))
+
+;; Convenience for the callers that only care about one language.
+(export (func blocks-tagged
+  :args (:array blocks :string tag)
+  :returns :array
+  :body (-> blocks (:filter (fn ((Block b)) (= (fence-base-tag b) tag))))))
+
+;; `lykn,compile-fail` and `lykn` are the same base language; the annotation
+;; after the comma is the doctest directive, not part of the tag.
+(export (func fence-base-tag
+  :args ((Block b))
+  :returns :string
+  :body (-> b:tag (:split ",") (:at 0))))
+
