@@ -50,14 +50,20 @@ program sat untracked in `workbench/` while committed documents pointed at them.
 ## Code fences
 
 Through 0.6.0, lykn code blocks use ` ```lisp `, **not** ` ```lykn ` — the
-Linguist submission is deferred to 0.7.0+. Consequence: `lykn test --docs`
-cannot see any of the book's blocks. Fix specced at
-`arc16-book-0.6.0-edition/design/fence-wiring-spec.md` (`D-2607-R4NW`).
+Linguist submission is deferred to 0.7.0+. The 0.6.0 book-fence gate is now:
 
-Do not treat `deno test test/book/` as a universal book gate. Until slice06
-lands the lisp-fence reachability gate, verify Lykn-owned examples with the
-repo `lykn` wrapper commands and record any remaining coverage gap in the
-language repo close/discovery artifacts.
+```sh
+/Users/oubiwann/lab/lykn/lang/.worktrees/0.6.x/bin/lykn test --docs src --fence lisp
+```
+
+Use `--fence lisp --fence lykn` for a mixed-tag sweep. The current whole-book
+gate is expected to fail on stale examples; that is routing input for lang
+arc16 follow-up slices, not permission to edit around language/tooling defects
+in prose.
+
+Do not treat `deno test test/book/` as a universal book gate. For targeted
+examples, use the release-worktree `lykn` wrapper commands and record failures
+or coverage gaps in the language repo close/discovery artifacts.
 
 ## Current 0.6.0 authoring truth
 
