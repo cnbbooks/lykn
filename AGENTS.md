@@ -14,13 +14,13 @@ The book's 0.6.0 edition is **arc16 of the lykn language project**, and it
 **gates the 0.6.0 release** (operator decision, 2026-07-24). Its plan-of-record
 is therefore in the language repo, not here:
 
-- **`/Users/oubiwann/lab/lykn/lang/.worktrees/0.6.x/docs/design-v0.6.0/arc16-book-0.6.0-edition/`**
+- **`/Users/oubiwann/lab/lykn/lang/.worktrees/planning/project02-language-toolchain-alignment/arc16-book-0.6.0-edition/`**
   — the arc plan, its slices, close reports, and source material (the drift
   inventory, the 0.6.0 kickoff thread, the fence-wiring spec, and the
   dogfooding friction log).
-- **`/Users/oubiwann/lab/lykn/lang/.worktrees/0.6.x/docs/backlog/discoveries.md`**
+- **`/Users/oubiwann/lab/lykn/lang/.worktrees/planning/backlog/discoveries.md`**
   — the Discovery Register. Book findings are `D-...` rows in the
-  `Book (arc16)` section. Read `docs/backlog/README.md` there for the protocol
+  `Book (arc16)` section. Read `backlog/README.md` there for the protocol
   **and the routing rule**.
 
 Layout confirmed with the operator 2026-07-25, per
