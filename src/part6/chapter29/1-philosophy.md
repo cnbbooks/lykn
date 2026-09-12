@@ -6,9 +6,9 @@ Lykn doesn't reinvent the test runner. Deno already has discovery, parallel exec
 
 Two phases. That's the whole thing.
 
-1. Discover `*_test.lykn` and `*.test.lykn` files
-2. Compile them to `.js`
-3. Invoke `deno test` on the compiled output
+1. Discover `.lykn` and `.lyk` test files under `test/` by default
+2. Compile them into `target/lykn/test/`
+3. Invoke `deno test --config project.json --no-check -A` on the generated output
 4. Report Deno's exit code
 
 The Rust compiler handles compilation. Deno handles execution, parallelism, reporters, coverage, sanitizers, and everything else a test runner should do. `lykn test` is the thin glue between them.
@@ -17,7 +17,7 @@ The Rust compiler handles compilation. Deno handles execution, parallelism, repo
 
 The testing DSL lives in `packages/testing/` — a macro module, not a compiler feature. The macros `test`, `suite`, `step`, and the assertion forms expand to `Deno.test()` + `jsr:@std/assert` calls at compile time. The compiled output is standard Deno test code. A developer who reads the generated JavaScript would recognise it immediately.
 
-```lisp
+```lisp,skip
 (import-macros "testing" (test is-equal))
 
 (test "addition works"
@@ -33,3 +33,5 @@ Deno.test("addition works", () => {
 ```
 
 No runtime dependency. No custom test runner. No framework. Just macros that erase themselves and leave clean, portable JavaScript behind — which is, if you think about it, the politest thing a testing framework can do.
+
+> The snippet above is a test-file shape, not a standalone book doctest. In a real `lykn new` project, `project.json` resolves the `testing` macro package; the book repo itself is an mdBook checkout, so isolated macro-import examples are marked as skipped documentation snippets.

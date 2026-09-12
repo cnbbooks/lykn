@@ -1,13 +1,13 @@
-## ESLint and Biome: When You Need Them
+## External Linters: When You Need Them
 
-Deno's built-in tools are the default. ESLint and Biome are alternatives for projects with specific needs.
+Deno's built-in tools and `lykn lint` are the default. ESLint and Biome are optional tools for projects with specific JavaScript-side needs.
 
 ### When to Reach for External Linters
 
-- Project needs framework-specific plugins (React, Vue, Angular)
-- Organizational standards require ESLint
-- Need custom lint rules Deno doesn't support
-- Want Biome's speed on very large codebases
+- Framework-specific JavaScript plugins: React, Vue, Angular, and their cousins in increasingly elaborate hats
+- Organizational standards that already require ESLint
+- Custom JavaScript lint rules Deno does not support
+- Very large generated or hand-written JS codebases where Biome's speed matters
 
 ### ESLint for Lykn Output
 
@@ -16,6 +16,7 @@ Flat config (`eslint.config.js`):
 ```javascript
 export default [
   {
+    ignores: ["target/lykn/**"],
     rules: {
       "eqeqeq": ["error", "smart"],
       "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
@@ -25,12 +26,12 @@ export default [
 ];
 ```
 
-The `"smart"` option for `eqeqeq` allows `== null` while enforcing `===` everywhere else.
+The `"smart"` option for `eqeqeq` allows `== null` while enforcing `===` elsewhere. That matters because Lykn intentionally emits nullish checks in a few places where JavaScript's loose-null idiom is the correct spell.
 
 ### Biome
 
-A single Rust binary that lints and formats in one pass. Install with `brew install biome`. Fast, minimal config, Prettier-compatible formatting. A solid choice if you need a standalone tool outside Deno's ecosystem.
+Biome is a fast standalone formatter and linter. Use it if your project already standardizes on Biome or needs one binary outside Deno's toolchain. For ordinary Lykn projects, start with `lykn lint`, `lykn fmt`, `deno lint`, and `deno fmt`.
 
 ### The Recommendation
 
-Start with `deno lint` and `deno fmt`. They're already installed, already configured, and already what the lykn project uses. Reach for ESLint or Biome when you have a specific reason to.
+Do not start by installing a second linting ecosystem. Start with Lykn's source linter and Deno's built-ins. Add ESLint or Biome when a concrete JavaScript requirement appears, and keep generated `target/lykn/` output out of source-style policy unless that policy is intentionally about compiler output.

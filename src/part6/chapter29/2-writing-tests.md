@@ -2,7 +2,7 @@
 
 The testing module provides its forms through `import-macros`, the same mechanism used for all of Lykn's macro modules. Import what you need, write tests, and the macros handle the rest.
 
-```lisp
+```lisp,skip
 (import-macros "testing"
   (test test-async suite step
    is is-equal is-not-equal is-strict-equal
@@ -17,7 +17,7 @@ Most test files import a subset — `test` and `is-equal` cover the majority of 
 
 A test is a name and a body. No ceremony.
 
-```lisp
+```lisp,skip
 (import-macros "testing" (test is-equal))
 
 (test "addition works"
@@ -38,7 +38,7 @@ Multiple assertions in a single test are fine. The test passes when all of them 
 
 When a test needs initialisation or cleanup, use the keyword-clause syntax. The reader already knows this pattern from `func`'s `:pre`/`:post`/`:body` clauses (Ch 8) — Lykn uses the same structural conventions across `func`, `test`, and `suite`.
 
-```lisp
+```lisp,skip
 (test "database query"
   :setup    (bind db (create-temp-db))
   :teardown (close db)
@@ -65,7 +65,7 @@ The `:teardown` clause wraps the body in `try { ... } finally { ... }` — clean
 
 The explicit form is `test-async`:
 
-```lisp
+```lisp,skip
 (test-async "fetches data"
   (bind result (await (fetch-data)))
   (is-equal result:status :ok))
@@ -80,10 +80,12 @@ Deno.test("fetches data", async () => {
 
 But `test` handles this automatically. If the macro finds `await` anywhere in the body, it emits an `async` function:
 
-```lisp
+```lisp,skip
 (test "also fetches data"
   (bind result (await (fetch-data)))
   (is-equal result:status :ok))
 ```
 
 Same output. The `test` macro walks the body at compile time, spots the `await`, and adjusts. `test-async` exists for the rarer case where the body delegates to an async helper without a lexically visible `await`, or where the author simply wants to be explicit about it.
+
+The skipped Lykn fences in this section are still exact surface forms. They are skipped because they are fragments of a project test file; the runnable context is supplied by a `lykn new` project through `project.json`, `packages/`, and `test/`, not by the book repository itself.

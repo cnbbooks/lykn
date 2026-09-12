@@ -27,9 +27,11 @@ That's it. You now have the `lykn` binary on your path — a self-contained comp
 If you prefer to build from source:
 
 ```sh
-git clone https://github.com/oxur/lykn.git
+git clone https://github.com/lykn-lang/lykn.git
 cd lykn
-cargo build --release && cp target/release/lykn bin/
+cargo build --release
+mkdir -p bin
+cp target/release/lykn bin/
 ```
 
 ### Your First Project
@@ -52,15 +54,17 @@ If you see output, the compiler is working.
 ### The Full Toolkit
 
 ```sh
-lykn compile main.lykn                    # compile to stdout
-lykn compile main.lykn -o main.js         # compile to file
-lykn compile main.lykn --strip-assertions # production mode
-lykn run main.lykn                        # compile + run
-lykn test                                 # run project tests
-lykn check main.lykn                      # syntax check
-lykn fmt main.lykn                        # format to stdout
-lykn fmt -w main.lykn                     # format in place
-lykn new project-name                     # scaffold a project
+lykn compile packages/my-app/mod.lykn       # compile to stdout
+lykn run packages/my-app/mod.lykn           # compile + run from source
+lykn build                                  # build workspace packages to target/lykn/build/
+lykn test                                   # compile tests to target/lykn/test/ and run them
+lykn test --docs docs/guides/ --fence lykn  # verify Markdown examples
+lykn lint packages/my-app test              # lint Lykn source
+lykn dist                                   # stage publishable packages in target/lykn/dist/
+lykn publish --jsr --dry-run                # verify the staged JSR package
+lykn check packages/my-app/mod.lykn         # syntax and analysis check
+lykn fmt -w packages/my-app/mod.lykn        # format in place
+lykn new project-name                       # scaffold a project
 ```
 
-One binary for compilation, formatting, checking, running, testing, and project creation. The Inquisition, one suspects, would have preferred something more complicated.
+One binary for compilation, formatting, checking, running, testing, linting, package staging, publishing, and project creation. The Inquisition, one suspects, would have preferred something more complicated.

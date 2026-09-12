@@ -15,4 +15,4 @@ Deno:args    ;; → string array of CLI args (after --)
 
 ### `project.json`
 
-Lykn projects use `project.json` for configuration — workspace settings, dependencies, and project metadata. `lykn new` generates this automatically.
+Lykn projects use root `project.json` for workspace imports, dependency pins, and project metadata. Each package keeps package metadata in its own `deno.json`; generated publish metadata is staged under `target/lykn/dist/` by `lykn dist`. `lykn new` creates the root and package files for you.

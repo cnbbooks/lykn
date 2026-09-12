@@ -8,7 +8,7 @@ The Lykn toolchain uses Deno exclusively. The reasons align with Lykn's own desi
 
 **Permissions** — network, file, and environment access must be explicitly granted. `deno run --allow-read app.js` is the minimum. Security by default, not by opt-in.
 
-**Built-in tools** — test runner, formatter, linter, bundler. No external tooling needed for basic workflows.
+**Built-in tools** — test runner, formatter, linter, task runner, and permission model. Lykn wraps the project workflow; Deno supplies the runtime machinery underneath.
 
 **Node.js compatibility** — Deno runs most Node.js code via `node:` specifiers (`import "node:fs"`) and npm packages via `npm:` specifiers. The ecosystem is accessible.
 
@@ -19,8 +19,9 @@ The Lykn toolchain uses Deno exclusively. The reasons align with Lykn's own desi
 The Lykn developer's commands:
 
 ```sh
-lykn run packages/my-app/mod.lykn     # compile + run
-lykn test                              # run project tests
-lykn compile src/app.lykn -o app.js    # compile to file
-deno run --allow-net app.js            # run compiled JS directly
+lykn run packages/my-app/mod.lykn      # compile + run
+lykn test                              # compile tests to target/lykn/test/ and run them
+lykn build                             # build workspace packages to target/lykn/build/
+lykn lint packages/my-app test         # lint Lykn source
+deno run --allow-net target/lykn/build/my-app/mod.js  # run built JS directly when teaching Deno
 ```

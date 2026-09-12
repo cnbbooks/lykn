@@ -24,7 +24,7 @@ The names follow Lykn's convention: named English words, not abbreviations. `is-
 
 The workhorse. Handles objects, arrays, nested structures — deep structural comparison, not reference identity.
 
-```lisp
+```lisp,skip
 (test "data structures"
   (is-equal #a(1 2 3) #a(1 2 3))
   (is-equal (obj :a 1 :b 2) (obj :a 1 :b 2)))
@@ -36,7 +36,7 @@ When it fails, Deno's built-in diff output shows both values with colour-coded d
 
 The body expression is wrapped in a closure and passed to `assertThrows`. The optional second argument specifies the expected error type; the optional third specifies the message.
 
-```lisp
+```lisp,skip
 (test "invalid input throws"
   (is-thrown (parse-json "not json") SyntaxError)
   (is-thrown (validate nil) TypeError "expected non-null"))
@@ -51,7 +51,7 @@ Deno.test("invalid input throws", () => {
 
 For async rejections, `is-thrown-async` wraps the body in an `async` closure and uses `assertRejects`:
 
-```lisp
+```lisp,skip
 (test-async "rejects on bad URL"
   (is-thrown-async (await (fetch-data "bad-url")) NetworkError))
 ```
@@ -60,7 +60,7 @@ For async rejections, `is-thrown-async` wraps the body in an `async` closure and
 
 When you care about shape, not completeness. The actual object may have additional fields — `obj-matches` only checks the ones you specify.
 
-```lisp
+```lisp,skip
 (test "response shape"
   (obj-matches response
     (obj :status 200 :ok true)))

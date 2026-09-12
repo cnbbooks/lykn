@@ -4,7 +4,7 @@
 
 `suite` groups related tests with shared context. Child `test` forms compile to `t.step()` calls, giving hierarchical output in the test reporter.
 
-```lisp
+```lisp,skip
 (suite "math operations"
   :setup    (bind fixtures (load-fixtures))
   :teardown (cleanup fixtures)
@@ -38,7 +38,7 @@ The `:setup` and `:teardown` apply to the entire suite — all child tests share
 
 `step` defines a sub-step within a test. Where `suite` groups independent tests, `step` sequences dependent operations within a single test.
 
-```lisp
+```lisp,skip
 (test "user workflow"
   (step "create user"
     (bind user (await (create-user :name "Alice")))

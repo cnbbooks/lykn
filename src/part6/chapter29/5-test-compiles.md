@@ -6,20 +6,23 @@ Most testing DSLs provide forms for checking values, catching errors, and matchi
 
 `test-compiles` takes a name, a Lykn input string, and an expected JavaScript output string. It calls `compile()` on the input and asserts the output matches.
 
-```lisp
-(import "../../packages/lykn/mod.js" (compile))
+```lisp,skip
 (import-macros "testing" (test-compiles))
+(import "testing/helpers.js" (compile))
 
 (test-compiles "bind simple"
   "(bind x 1)" "const x = 1;")
 
 (test-compiles "func with body"
-  "(func add :args (a b) :body (+ a b))"
-  "function add(a, b) {\n  return a + b;\n}")
+  "(func add :args (:number a :number b) :returns :number :body (+ a b))"
+  "function add(a, b) {
+  const result__gensym0 = a + b;
+  return result__gensym0;
+}")
 ```
 
 ```javascript
-import { compile } from "../../packages/lykn/mod.js";
+import { compile } from "testing/helpers.js";
 
 Deno.test("bind simple", () => {
   const r_1 = compile("(bind x 1)");
@@ -27,16 +30,19 @@ Deno.test("bind simple", () => {
 });
 
 Deno.test("func with body", () => {
-  const r_2 = compile("(func add :args (a b) :body (+ a b))");
-  assertEquals(r_2.trim(), "function add(a, b) {\n  return a + b;\n}");
+  const r_2 = compile("(func add :args (:number a :number b) :returns :number :body (+ a b))");
+  assertEquals(r_2.trim(), "function add(a, b) {
+  const result__gensym0 = a + b;
+  return result__gensym0;
+}");
 });
 ```
 
-One line replaces a five-line `Deno.test` + `compile` + `assertEquals` pattern. The `compile` import is not part of the macro — the test file imports it explicitly, keeping the testing module decoupled from the compiler.
+One line replaces a five-line `Deno.test` + `compile` + `assertEquals` pattern. The `compile` import is not part of the macro — the test file imports it explicitly from `testing/helpers.js`, keeping the testing module decoupled from the compiler and avoiding relative imports into the language source tree.
 
 ### Why This Exists
 
-Lykn's test suite has over 1,300 tests. The majority follow exactly this pattern: compile a Lykn string, check the JavaScript output. Fourteen surface test files and thirty kernel form test files, each with dozens of input-output pairs.
+Lykn's test suite has hundreds of tests. The majority follow exactly this pattern: compile a Lykn string, check the JavaScript output. Fourteen surface test files and thirty kernel form test files, each with dozens of input-output pairs.
 
 `test-compiles` captures that pattern in a single macro. The ergonomic gain is not just fewer characters — it's a test file that reads as a specification. Each line declares what the compiler should produce for a given input, without the ceremony of naming variables, calling functions, and comparing results.
 

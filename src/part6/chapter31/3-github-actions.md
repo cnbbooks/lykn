@@ -19,44 +19,47 @@ jobs:
         with:
           deno-version: v2.x
 
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
       - name: Install lykn
         run: cargo install lykn-cli
 
-      - name: Install Biome
-        run: |
-          curl -fsSL https://biomejs.dev/install.sh | sh
-          echo "$HOME/.biome/bin" >> $GITHUB_PATH
+      - name: Check syntax and analysis
+        run: lykn check packages/my-app/mod.lykn test/mod_test.lykn
 
-      - name: Check syntax
-        run: lykn check src/
+      - name: Build workspace packages
+        run: lykn build
 
-      - name: Compile
-        run: lykn compile src/ --out-dir dist/
-
-      - name: Lint compiled output
-        run: biome ci dist/
+      - name: Lint Lykn source
+        run: lykn lint packages/ test/
 
       - name: Run tests
-        run: lykn test test/
+        run: lykn test
 
       - name: Test documentation
         run: lykn test --docs docs/
+
+      - name: Verify publish staging
+        run: lykn publish --jsr --dry-run
 ```
 
 ### Walking Through the Steps
 
-**Setup** installs three tools: Deno (the runtime), lykn (the compiler), and Biome (the linter). Each is a single binary — no `node_modules`, no dependency trees, no install scripts that phone home.
+**Setup** installs Deno (the runtime), Rust (for installing the compiler), and Lykn. There is no `node_modules` step in the default path.
 
-**Check** runs `lykn check` for fast syntax validation. This catches obvious errors — missing parentheses, undefined symbols, unused bindings — before the full compilation pipeline starts.
+**Check** runs `lykn check` for syntax and analysis validation. This catches missing parentheses, bad parameter shapes, overlap errors, and other source problems before the full build starts.
 
-**Compile** runs the full surface compiler and kernel codegen. If this fails, the source has a semantic error: a type mismatch, an exhaustiveness failure, a macro expansion that produced invalid kernel forms.
+**Build** runs the workspace build and writes generated JavaScript under `target/lykn/build/`.
 
-**Lint** runs `biome ci` — the CI-specific mode that fails on any issue without auto-fixing. In development you might use `biome check --write` to fix formatting automatically. In CI, you want to know about it, not hide it.
+**Lint** runs `lykn lint`, the source-language linter. If your project also wants JavaScript linting, add `deno lint target/lykn/build/` as a separate explicit step.
 
-**Test** runs the lykn test suite. The `.lykn` test files compile to `.js` and Deno's test runner executes them.
+**Test** runs the Lykn test suite. The source tests compile under `target/lykn/test/`; Deno executes the generated files.
 
-**Documentation** runs `lykn test --docs` against the project's Markdown files. Every code example is verified.
+**Documentation** runs `lykn test --docs` against the project's Markdown files. This book uses `--fence lisp`; most new Lykn project docs can use the default `lykn` fence.
+
+**Publish dry-run** runs the same staging path used by real publication, without uploading. `lykn publish` refuses dirty working trees by default; CI should be boring enough to appreciate that.
 
 ### Portability
 
-This workflow uses GitHub Actions because it's the most common CI platform, but the steps translate directly to any CI system. The pipeline is just shell commands — `lykn check`, `lykn compile`, `biome ci`, `lykn test`. GitLab CI, CircleCI, Buildkite, or a shell script in a `Makefile` — the commands are the same. The CI configuration is plumbing; the pipeline is the substance.
+This workflow uses GitHub Actions because it's the most common CI platform, but the steps translate directly to any CI system. The pipeline is just shell commands — `lykn check`, `lykn build`, `lykn lint`, `lykn test`, `lykn test --docs`, `lykn publish --dry-run`. GitLab CI, CircleCI, Buildkite, or a shell script in a `Makefile` — the commands are the same. The CI configuration is plumbing; the pipeline is the substance.
