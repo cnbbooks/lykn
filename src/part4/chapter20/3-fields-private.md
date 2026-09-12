@@ -58,7 +58,7 @@ class BankAccount {
 
 Private methods work the same way:
 
-```lisp
+```lisp,fragment
 (-validate (amount)
   (if (<= amount 0)
     (throw (new Error "Amount must be positive"))))

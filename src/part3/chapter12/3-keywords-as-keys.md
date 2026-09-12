@@ -19,12 +19,12 @@ Keywords (`:name`, `:age`, `:first-name`) compile to string literals (`"name"`, 
 ```
 
 **Type annotations** (Ch 5):
-```lisp
+```lisp,fragment
 (func greet :args (:string name) ...)
 ```
 
 **Match patterns** (Ch 10):
-```lisp
+```lisp,fragment
 (match response
   ((obj :ok true :data d) (process d))
   ...)

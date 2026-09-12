@@ -14,7 +14,7 @@ In Erlang, function heads with pattern matching on arguments are the primary mec
 
 ### LFE
 
-```lisp
+```scheme
 ;; LFE (Lisp Flavoured Erlang)
 (defun greet
   ((name) (++ "Hello, " name))

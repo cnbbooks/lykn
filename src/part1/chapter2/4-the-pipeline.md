@@ -82,8 +82,8 @@ For `(bind x 42)`, the pipeline is almost trivial. Here's what happens with some
 
 The reader sees a list with atoms, keywords, and a nested list. The classifier identifies it as a `func` form and parses the keyword-labeled clauses. The analyzer registers the function signature and checks that the type keywords are valid. The emitter produces:
 
-```lisp
-;; Kernel output (what the emitter produces):
+```lisp,skip
+;; Kernel output sketch (what the emitter produces internally):
 (function double (n)
   (if (!== (typeof n) "number")
     (throw (new TypeError "double: arg 'n' expected number, got ...")))

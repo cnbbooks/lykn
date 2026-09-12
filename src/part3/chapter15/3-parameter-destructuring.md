@@ -161,7 +161,7 @@ function processPair([{name}, score]) {
 Kernel `function` forms also support destructuring, without the type annotation requirement:
 
 ```lisp
-(function create-user ((object name age email))
+(kernel:function create-user ((object name age email))
   (return (obj :name name :age age :email email :active true)))
 ```
 

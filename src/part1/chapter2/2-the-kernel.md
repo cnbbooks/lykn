@@ -7,8 +7,8 @@ The kernel is the Department of JavaScript Compilation. It receives s-expression
 Approximately thirty forms, each mapping to one or a few JavaScript constructs. Here are three:
 
 ```lisp
-;; Kernel: const
-(const name "Duncan")
+;; Surface code reaches a kernel-only binding through an explicit escape.
+(kernel:const name "Duncan")
 ```
 
 ```javascript
@@ -16,8 +16,8 @@ const name = "Duncan";
 ```
 
 ```lisp
-;; Kernel: function declaration
-(function greet (name)
+;; Surface code reaches a kernel-only function declaration through an explicit escape.
+(kernel:function greet (name)
   (return (template "Hello, " name "!")))
 ```
 

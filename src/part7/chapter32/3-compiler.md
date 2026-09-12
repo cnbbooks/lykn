@@ -26,7 +26,7 @@ Each kernel form has a handler function. The handler receives the arguments (eve
 ### `const` → `VariableDeclaration`
 
 ```lisp
-(const x 42)
+(kernel:const x 42)
 ```
 
 The handler produces:
@@ -48,7 +48,7 @@ astring prints: `const x = 42;`
 ### `function` → `FunctionDeclaration`
 
 ```lisp
-(function add (a b) (return (+ a b)))
+(kernel:function add (a b) (return (+ a b)))
 ```
 
 Produces a `FunctionDeclaration` with `Identifier` params, a `BlockStatement` body containing a `ReturnStatement` with a `BinaryExpression`. The tree maps directly to ESTree — no transformation, no optimization, just structural translation.

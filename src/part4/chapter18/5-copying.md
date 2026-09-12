@@ -5,24 +5,21 @@
 Three equivalent approaches:
 
 ```lisp
-;; assoc with no overrides (preferred)
-(bind copy (assoc original))
-
-;; Kernel spread
+;; Kernel spread for a shallow copy
 (bind copy (object (spread original)))
 
-;; Object.assign
-(bind copy (Object:assign (obj) original))
+;; Object.assign works too
+(bind copy2 (Object:assign (obj) original))
 ```
 
 All produce `{...original}` — a new object with the same own, enumerable properties.
 
 ### Deep Copy
 
-`structured-clone` (modern, built-in):
+`structuredClone` (modern, built-in):
 
 ```lisp
-(bind deep (structured-clone original))
+(bind deep (structuredClone original))
 ```
 
 ```javascript

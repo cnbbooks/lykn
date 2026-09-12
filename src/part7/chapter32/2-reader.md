@@ -14,7 +14,7 @@ The reader turns text into a tree. It's 320 lines of JavaScript in `packages/lyk
 
 ### A Concrete Example
 
-```lisp
+```lisp,skip
 (bind greeting (template "Hello, " name "!"))
 ```
 

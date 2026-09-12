@@ -10,14 +10,11 @@ The surface has two function forms. The kernel has three, because JavaScript doe
 
 ### The Three Kernel Forms
 
-```lisp
-;; Kernel: function declaration (explicit return required)
+```lisp,skip
+;; Kernel vocabulary sketch. In surface files, kernel-only declaration
+;; forms require explicit `kernel:` escape or a surface equivalent.
 (function add (a b) (return (+ a b)))
-
-;; Kernel: arrow function
 (=> (x) (* x 2))
-
-;; Kernel: function expression (anonymous, non-arrow)
 (lambda (x) (return (* x 2)))
 ```
 

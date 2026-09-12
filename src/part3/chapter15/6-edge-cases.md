@@ -10,7 +10,7 @@ Destructuring a non-destructurable value throws a runtime `TypeError` — same a
 
 ### `rest` Must Be Last
 
-```lisp
+```lisp,compile-fail
 ;; COMPILE ERROR
 (bind (array (rest first) last) items)
 ```
@@ -29,9 +29,9 @@ In array patterns, `_` is a skip marker — it skips a position. In object patte
 
 In surface `func` and `fn`, destructured params require type annotations on every field. A bare name is a compile error:
 
-```lisp
+```lisp,compile-fail
 ;; COMPILE ERROR: field 'name' missing type annotation (use :any to opt out)
-(func f :args ((object name)) :body ...)
+(func f :args ((object name)) :body name)
 ```
 
 In multi-clause functions, two clauses that both destructure objects at the same position overlap — because dispatch can only check `typeof`, not the shape of the object's properties.
@@ -40,12 +40,14 @@ In multi-clause functions, two clauses that both destructure objects at the same
 
 Nested patterns in object destructuring must use `alias` to specify the property name:
 
-```lisp
+```lisp,compile-fail
 ;; COMPILE ERROR: must use alias
-(func f :args ((object (object :string name))) :body ...)
+(func f :args ((object (object :string name))) :body name)
+```
 
+```lisp
 ;; OK: alias provides the property key
-(func f :args ((object (alias :any c (object :string name)))) :body ...)
+(func f :args ((object (alias :any c (object :string name)))) :body name)
 ```
 
 In array destructuring, nesting is positional — no `alias` needed.

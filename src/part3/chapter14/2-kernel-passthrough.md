@@ -45,7 +45,7 @@ The `for` loop uses kernel `let` (mutable) for the loop variable. Surface `bind`
 ### `let` Works (But Don't)
 
 ```lisp
-(let x 0)
+(kernel:let x 0)
 (+= x 1)
 (console:log x)
 ```

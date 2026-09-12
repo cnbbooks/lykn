@@ -7,8 +7,9 @@ Practical patterns for common interop scenarios.
 Most JavaScript APIs accept callbacks. `fn` (arrow functions, no `this` binding) handles these naturally:
 
 ```lisp
-;; Express-style handler
-(bind app (express))
+;; Express-style handler. `make-express-app` stands in for an imported
+;; JavaScript library factory.
+(bind app (make-express-app))
 (app:get "/users" (fn (:any req :any res)
   (bind users (get-users))
   (res:json users)))
