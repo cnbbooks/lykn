@@ -8,6 +8,8 @@ Published by Cowboys 'N' Beans Books
 
 First electronic edition published: 2026
 
+Lykn · v0.6 edition
+
 <br/>
 <br/>
 <br/>

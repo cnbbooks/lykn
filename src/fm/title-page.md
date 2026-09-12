@@ -4,6 +4,8 @@
 
 ### A Lisp Flavoured JavaScript
 
+Lykn v0.6 edition
+
 [DRAFT]
 <br/>
 <br/>

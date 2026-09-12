@@ -230,3 +230,16 @@ img.liffy-bot-mascot {
     border: 0;
     border-bottom: solid 1px #666;
 }
+
+.lykn-edition-footer {
+  margin-block-start: 3rem;
+  padding-block: 1rem 2rem;
+  color: var(--fg);
+  font-size: 0.875rem;
+  opacity: 0.68;
+  text-align: center;
+}
+
+.lykn-edition-footer a {
+  color: inherit;
+}

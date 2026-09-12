@@ -405,6 +405,8 @@
 
 [Lichen for Dessert](dessert.md)
 
+[Book Versions](book-versions.md)
+
 [Feedback](feedback.md)
 
 --------------------
