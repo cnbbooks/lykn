@@ -1,12 +1,10 @@
 ## Overlap Is a Compile Error
 
-If two clauses could match the same arguments, the CLI compile path rejects the function. This is not a warning. It is an error.
-
-The examples below are skipped in the book's JS-API doctest path pending `D-2609-FOVL`: the current JS API emits first-match code for these overlapping clauses instead of rejecting them at compilation time. The 0.6.0 release still needs that implementation parity fixed before this chapter can make the stronger unqualified claim.
+If two clauses could match the same arguments, the compiler rejects the function. This is not a warning. It is an error.
 
 ### What Overlap Looks Like
 
-```lisp,skip
+```lisp,compile-fail
 ;; COMPILE ERROR: both clauses match (:number)
 (func bad
   (:args (:number x)
@@ -19,7 +17,7 @@ The examples below are skipped in the book's JS-API doctest path pending `D-2609
 error: bad: clauses 0 and 1 overlap (same arity 1, compatible types)
 ```
 
-```lisp,skip
+```lisp,compile-fail
 ;; COMPILE ERROR: :any overlaps with :number
 (func also-bad
   (:args (:number x)
@@ -46,7 +44,7 @@ Lykn makes clause order irrelevant by requiring non-overlapping types. If no two
 
 Destructured object parameters (Ch 15) have dispatch type `:object`. Destructured array parameters have dispatch type `:array`. Two clauses that both destructure objects at the same position overlap — because dispatch checks `typeof`, not the shape of the object's properties:
 
-```lisp,skip
+```lisp,compile-fail
 ;; COMPILE ERROR: both clauses accept objects at position 0
 (func bad
   (:args ((object :string name))
