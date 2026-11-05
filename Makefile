@@ -5,8 +5,12 @@ PUBLISH_DIR = book
 PUBLISH_CONTENT = $(PUBLISH_DIR)
 PORT = 5099
 CALIBRE := $(HOME)/Applications/Media/calibre.app/Contents/MacOS/ebook-convert
+MERMAID_VERSION = 12.3.0
+MDBOOK_MERMAID_VERSION = 0.17.1
 
 default: build
+
+.PHONY: default build build-mdbook build-calibre serve run install deps test-build clean clean-all
 
 define BINARY_ERROR
 
@@ -34,11 +38,9 @@ $(PUBLISH_DIR)/pdf:
 	@mkdir -p $(PUBLISH_DIR)/pdf
 
 build-calibre: $(PUBLISH_DIR)/pdf
-ifndef CALIBRE
-	@echo ">> Calibre not found at $(CALIBRE). Skipping ebook generation."
-else
+	@test -x "$(CALIBRE)" || { echo "Calibre not found at $(CALIBRE)" >&2; exit 1; }
 	@echo ">> Building PDF with Calibre..."
-	@$(CALIBRE) $(PUBLISH_DIR)/epub/Lykn.epub $(PUBLISH_DIR)/pdf/Lykn.pdf \
+	@"$(CALIBRE)" "$(PUBLISH_DIR)/epub/Lykn.epub" "$(PUBLISH_DIR)/pdf/Lykn.pdf" \
 		--pdf-page-numbers \
 		--preserve-cover-aspect-ratio \
 		--pdf-default-font-size 11 \
@@ -47,8 +49,7 @@ else
 		--margin-top 54 --margin-bottom 54 \
 		--margin-left 54 --margin-right 54 \
 		--disable-remove-fake-margins
-	@echo ">> PDF generated at $(PUBLISH_DIR)/book.epub
-endif
+	@echo ">> PDF generated at $(PUBLISH_DIR)/pdf/Lykn.pdf"
 
 run: serve
 
@@ -58,9 +59,11 @@ install:
 
 deps:
 	@echo ">> Installing dependencies ..."
-	-@cargo install mdbook-mermaid
-	@mdbook-mermaid install
-	@mv mermaid*.js ./js/
+	cargo install mdbook-mermaid --version $(MDBOOK_MERMAID_VERSION)
+	curl --fail --location https://cdn.jsdelivr.net/npm/mermaid@$(MERMAID_VERSION)/dist/mermaid.min.js --output js/mermaid.min.js
+
+test-build:
+	python3 -B scripts/test_epub_preprocessor.py
 
 clean:
 	@echo ">> Removing auto-generated top-level files ..."

@@ -14,14 +14,8 @@ build-dir = "book"
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
-# EPUB-only preprocessor: rewrites relative image paths so they resolve
-# correctly under mdbook-epub. mdbook-epub v0.5.2 joins paths as
-# 'root + src + path' rather than relative to the containing markdown file,
-# so '../../images/foo.png' fails. This preprocessor runs only for EPUB
-# builds (via `renderers = ["epub"]`) and normalizes paths to be src-rooted.
-# Source files stay pristine; HTML build is untouched.
-#
-# When mdbook-epub fixes this upstream, remove these two lines.
+# EPUB-only cover exception: link to the small cover already packaged in
+# the ebook. Preserve other chapter-relative image paths and HTML output.
 [preprocessor.epub-image-paths]
 command = "./scripts/mdbook-epub-image-paths.py"
 renderers = ["epub"]

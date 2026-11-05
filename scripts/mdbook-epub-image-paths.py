@@ -1,26 +1,9 @@
 #!/usr/bin/env python3
 """
-mdbook-epub-image-paths — mdbook preprocessor that rewrites relative image
-paths so they resolve correctly under mdbook-epub.
-
-Background:
-  mdbook-epub (v0.5.2, confirmed from source) resolves image paths as
-  'root + src + path' rather than relative to the containing markdown file.
-  This means '../../images/foo.png' from src/a/b/c.md resolves to
-  root/images/foo.png (one level above src/), which doesn't exist.
-
-  mdbook's HTML renderer correctly resolves the same reference as
-  src/images/foo.png, so we can't just edit the source.
-
-Fix:
-  This preprocessor walks the book in memory, computes what each relative
-  image path SHOULD resolve to from mdbook-epub's perspective, and rewrites
-  the chapter content with a path that works. Source files are untouched.
-
-  For chapter at src/a/b/c.md referencing '../../images/foo.png':
-    mdbook HTML resolves: src/a/b/../../images/foo.png -> src/images/foo.png OK
-    We need mdbook-epub to see: images/foo.png
-    Because it does: src + images/foo.png -> src/images/foo.png OK
+EPUB-only image policy: reuse the small cover rather than linking to the
+full-resolution web cover. Preserve other chapter-relative paths; the EPUB
+renderer already resolves them relative to their source chapters. Source
+files and HTML output stay untouched.
 
 Configuration (in book.toml):
 
@@ -87,42 +70,19 @@ def is_rewritable(path: str) -> bool:
 
 def normalize_for_epub(chapter_path: str, ref_path: str) -> str:
     """
-    Given a chapter's path (relative to src/, e.g. 'a/b/c.md') and a
-    reference path from that chapter (e.g. '../../images/foo.png'),
-    return the path form that mdbook-epub needs.
-
-    Strategy: figure out what src-relative path this reference actually
-    points to (same calculation mdbook's HTML renderer does), then return
-    that src-relative path. mdbook-epub joins 'root + src + path', so a
-    src-relative path resolves correctly.
+    Substitute only the book's large cover, preserving chapter relativity.
     """
-    # Use PurePosixPath for cross-platform consistency (book paths are posix).
     chapter_dir = PurePosixPath(chapter_path).parent
-
-    # os.path.normpath handles ../ collapsing. We keep this as a string
-    # operation because PurePosixPath doesn't collapse .. in the middle
-    # of a path (it's lexical, not filesystem-aware, but it also doesn't
-    # resolve up-navigation).
     joined = str(chapter_dir / ref_path) if str(chapter_dir) != '.' else ref_path
     normalized = os.path.normpath(joined).replace('\\', '/')
-
-    # If normpath collapsed to something beginning with ../ it means the
-    # reference escapes src/ entirely — that's a broken link, not something
-    # we can fix. Return unchanged so the error surfaces meaningfully.
-    if normalized.startswith('../'):
-        return ref_path
-
-    # Strip a leading "./" if present (cosmetic).
-    if normalized.startswith('./'):
-        normalized = normalized[2:]
-
-    return normalized
+    if normalized == 'images/cover-large.png':
+        return str(PurePosixPath(ref_path).with_name('cover.png'))
+    return ref_path
 
 
 def rewrite_content(chapter_path: str, content: str) -> str:
     """
-    Rewrite all image references in the chapter content so paths are
-    src-relative rather than file-relative.
+    Apply the EPUB cover exception to inline, reference, and HTML images.
     """
     def rewrite_md(m):
         prefix, path, title, suffix = m.groups()
@@ -154,8 +114,8 @@ def rewrite_content(chapter_path: str, content: str) -> str:
 def walk_items(sections: list) -> None:
     """
     Recursively walk a book's section list, rewriting each Chapter's content.
-    mdbook book JSON shape:
-      { "sections": [ {"Chapter": {...}}, {"Separator": null}, ... ] }
+    mdbook 0.5 book JSON shape (older versions use "sections" instead):
+      { "items": [ {"Chapter": {...}}, {"Separator": null}, ... ] }
     A Chapter has: name, content, path, sub_items, ...
     """
     for section in sections:
@@ -190,7 +150,8 @@ def run_preprocessor() -> int:
         return 1
 
     _context, book = payload
-    sections = book.get('sections', [])
+    # mdBook 0.5 uses items; older versions use sections.
+    sections = book.get('items', book.get('sections', []))
     walk_items(sections)
 
     json.dump(book, sys.stdout)
@@ -200,9 +161,7 @@ def run_preprocessor() -> int:
 def run_supports_check(renderer: str) -> int:
     """
     mdbook asks 'supports <renderer>?' to decide whether to invoke us.
-    We support only epub — HTML and other renderers don't need this fix
-    (and running it on HTML would actively break things by rewriting paths
-    that the HTML renderer depends on being file-relative).
+    Support only EPUB; HTML retains its link to the full-resolution cover.
     """
     supported = renderer == 'epub'
     # Log to stderr — mdbook prints preprocessor stderr to the user's

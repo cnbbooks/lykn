@@ -1,0 +1,2 @@
+# Preserve the upstream browser bundle verbatim, including template-string whitespace.
+js/mermaid.min.js -whitespace

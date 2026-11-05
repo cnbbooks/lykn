@@ -30,7 +30,7 @@ jobs:
       - name: Install mdBook toolchain
         run: |
           cargo binstall --no-confirm mdbook
-          cargo binstall --no-confirm mdbook-mermaid
+          cargo binstall --no-confirm mdbook-mermaid --version 0.17.1
           cargo binstall --no-confirm mdbook-epub
 
       # Python is pre-installed on ubuntu-latest runners; this step is
@@ -50,7 +50,9 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with mdBook
-        run: mdbook build
+        run: |
+          make test-build
+          mdbook build
 
       - name: Rename EPUB for release
         run: |
