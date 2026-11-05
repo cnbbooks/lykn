@@ -40,7 +40,7 @@ That's it. That is the entire transaction. You write s-expressions with type ann
 
 The type annotations — `:string` on the parameter, `:returns :string` on the function — compile to runtime `typeof` checks in development. In production, you pass `--strip-assertions` and they vanish, leaving behind nothing but the clean function. Contracts without consequences, if you prefer. Or consequences without contracts, depending on your build flag.
 
-lykn has two layers, and understanding them is the key to understanding everything else in this book.
+Next, some notes on language structure. Lykn has two layers, and understanding them is the key to understanding everything else in this book.
 
 ### Kernel Layer
 
@@ -52,7 +52,7 @@ The **Lykn Surface** is what you are encouraged to use. It sits on top of the ke
 
 ### All Together, Now
 
-Surface forms compile to kernel forms. Kernel forms compile to JavaScript. At no point does anything magical happen — the magic, such that it is, lies in the *absence* of magic. The compiled output is readable. Debuggable. Ordinary. The sort of JavaScript you would write yourself, if you had infinite patience and a deep personal commitment to `const`.
+Surface forms compile to kernel forms. Kernel forms compile to JavaScript. At no point does anything magical happen — the magic, such that it is, lies in the *absence* of magic. The compiled output is readable. Debuggable. Ordinary. The sort of JavaScript you would write yourself, if you had approximately infinite patience.
 
 ### Suspension of Belief
 
